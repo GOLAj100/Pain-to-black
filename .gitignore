@@ -73,3 +73,8 @@ define_sanity_output.txt
 # Running OpenDream locally
 tgmc.json
 rust_g64.dll
+
+# Local server state and account data
+data/
+player_saves/
+
