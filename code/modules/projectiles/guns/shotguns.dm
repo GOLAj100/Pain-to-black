@@ -88,12 +88,15 @@
 	cocked_sound = 		'sound/weapons/guns/shotgun/SH-39/SH39_pump.ogg'
 	opened_sound = 		'sound/weapons/guns/shotgun/SH-39/SH39_pump.ogg'
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES
+	reciever_flags = AMMO_RECIEVER_HANDFULS|AMMO_RECIEVER_REQUIRES_UNIQUE_ACTION|AMMO_RECIEVER_UNIQUE_ACTION_LOCKS
 	default_ammo_type = /datum/ammo/bullet/shotgun/buckshot
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonetknife,
 		/obj/item/attachable/bayonetknife/som,
 		/obj/item/attachable/reddot,
+		/obj/item/attachable/scope/marine,
+		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/gyro,
@@ -107,18 +110,18 @@
 		/obj/item/attachable/stock/t39stock,
 	)
 
-	attachable_offset = list("muzzle_x" = 41, "muzzle_y" = 20,"rail_x" = 18, "rail_y" = 20, "under_x" = 23, "under_y" = 12, "stock_x" = 13, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 20,"rail_x" = 9, "rail_y" = 21, "under_x" = 29, "under_y" = 13, "stock_x" = 13, "stock_y" = 14)
 	starting_attachment_types = list(/obj/item/attachable/stock/t39stock)
 
-	fire_delay = 1.4 SECONDS
+	fire_delay = 2 SECONDS
 	accuracy_mult = 1.05
 	accuracy_mult_unwielded = 0.65
 	scatter = 3
 	scatter_unwielded = 12
-	damage_mult = 0.7  //30% less damage. Faster firerate.
 	recoil = 2
 	recoil_unwielded = 4
-	wield_delay = 1 SECONDS
+	cock_delay = 1.4 SECONDS
+	aim_slowdown = 0.45
 	akimbo_additional_delay = 0.9
 
 /obj/item/weapon/gun/shotgun/combat/standardmarine/beginner
@@ -327,7 +330,7 @@
 	scatter_unwielded = 10
 	recoil = 0 // It has a stock. It's on the sprite.
 	recoil_unwielded = 0
-	cock_delay = 12
+	cock_delay = 1.2 SECONDS
 	aim_slowdown = 0.4
 
 /obj/item/weapon/gun/shotgun/pump/cmb/mag_harness
@@ -507,7 +510,7 @@
 	scatter_unwielded = 12
 	recoil = -3
 	recoil_unwielded = 4
-	cock_delay = 12
+	cock_delay = 1.2 SECONDS
 	aim_slowdown = 1
 	wield_delay = 1.4 SECONDS
 	movement_acc_penalty_mult = 4.5
@@ -752,7 +755,7 @@
 	scatter_unwielded = 7
 	recoil = 2
 	recoil_unwielded = 4
-	cock_delay = 6
+	cock_delay = 0.6 SECONDS
 
 
 // ***********************************************
@@ -762,11 +765,11 @@
 	name = "\improper Leicester Repeater"
 	desc = "The gun that won the west or so they say. But space is a very different kind of frontier all together, chambered for .45-70 Governemnt."
 	icon = 'icons/obj/items/gun/marksman64.dmi'
-	icon_state = "leicrepeater"
-	worn_icon_state = "leicrepeater"
+	icon_state = "raven_repeater"
+	worn_icon_state = "raven_repeater"
 	unique_reskin = list(
-		"Raven repeater" = "raven_repeater",
-		"Red" = "leicrepeater_red",
+		"Moder repeater" = "leicrepeater",
+		"Red chine" = "leicrepeater_red",
 	)
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/gun/marksman_lefthand_1.dmi',
@@ -805,7 +808,7 @@
 	scatter_unwielded = 7
 	recoil = 0
 	recoil_unwielded = 2
-	cock_delay = 2
+	cock_delay = 0.2 SECONDS
 	aim_slowdown = 0.6
 	movement_acc_penalty_mult = 5
 
@@ -901,7 +904,7 @@
 	recoil = 2
 	recoil_unwielded = 4
 	aim_slowdown = 0.45
-	cock_delay = 14
+	cock_delay = 1.4 SECONDS
 
 	placed_overlay_iconstate = "t35"
 
@@ -1111,12 +1114,12 @@
 	starting_attachment_types = null
 	attachable_offset = list("muzzle_x" = 52, "muzzle_y" = 20,"rail_x" = 24, "rail_y" = 22, "under_x" = 35, "under_y" = 14, "stock_x" = 13, "stock_y" = 13)
 
-	fire_delay = 3 //one shot every 0.3 seconds.
+	fire_delay = 4 //one shot every 0.4 seconds.
 	accuracy_mult = 1.05
 	scatter = 3
-	damage_mult = 0.6  //40% less damage.
+	damage_mult = 0.65  //35% less damage.
 	recoil = 0.5
-	wield_delay = 0.8 SECONDS
+	wield_delay = 0.6 SECONDS
 	aim_slowdown = 0.2
 
 //It's very fast shogun, it's made to prevent stagger/weaken spam.

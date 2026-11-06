@@ -18,18 +18,18 @@
 	caliber = CALIBER_44LS
 	max_rounds = 8
 
-/obj/item/ammo_magazine/revolver/t500
-	name = "\improper R-500 speed loader (.500)"
+/obj/item/ammo_magazine/revolver/t76
+	name = "\improper R-76 speed loader (.12x7)"
 	icon_state = "t500"
-	desc = "A R-500 'Nigredo' revolver speed loader."
-	default_ammo = /datum/ammo/bullet/revolver/t500
+	desc = "A R-76 'Nigredo' revolver speed loader."
+	default_ammo = /datum/ammo/bullet/revolver/t76
 	caliber = CALIBER_500
 	max_rounds = 5
 
-/obj/item/ammo_magazine/revolver/t500/slavs
-	name = "\improper R-500 speed loader (.500 'Slavs')"
+/obj/item/ammo_magazine/revolver/t76/faust
+	name = "\improper R-76 speed loader (.12x7 'Faust')"
 	icon_state = "t500_sv"
-	default_ammo = /datum/ammo/bullet/revolver/t500/slavs
+	default_ammo = /datum/ammo/bullet/revolver/t76/faust
 
 /obj/item/ammo_magazine/revolver/t312
 	name = "\improper R-312 White Express speed loader (.500)"

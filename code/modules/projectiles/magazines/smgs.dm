@@ -117,7 +117,7 @@
 	max_rounds = 32
 
 /obj/item/ammo_magazine/smg/uzi/extended
-	name = "\improper GAL9 extended magazine (9mm)"
+	name = "\improper SMG-2 extended magazine (9mm)"
 	icon_state = "uzi_ext"
 	max_rounds = 50
 	bonus_overlay = "uzi_ex"
@@ -205,20 +205,32 @@
 //vector
 
 /obj/item/ammo_magazine/smg/vector
-	name = "\improper Vector drum magazine (.45ACP)"
-	desc = "A .45ACP drum magazine for the Vector, with even more dakka."
+	name = "\improper Vector fmj drum magazine (.9mm)"
+	desc = "A .9mm drum magazine for the Vector, with even more dakka."
 	ammo_band_icon = "ppsh_ext_band"
-	default_ammo = /datum/ammo/bullet/smg/acp
+	default_ammo = /datum/ammo/bullet/pistol
 	w_class = WEIGHT_CLASS_SMALL
-	caliber = CALIBER_45ACP
+	caliber = CALIBER_9X19
 	icon_state = "ppsh_ext"
-	max_rounds = 40 // HI-Point .45 ACP Drum mag
+	max_rounds = 65 // HI-Point 9mm Drum mag
 
 /obj/item/ammo_magazine/smg/vector/incendiary
-	name = "\improper Vector incendiary drum magazine (.45ACP)"
-	desc = "A .45ACP incendiary drum magazine for the Vector, with even more dakka."
+	name = "\improper Vector incendiary drum magazine (.9mm)"
+	desc = "A .9mm incendiary drum magazine for the Vector, with even more dakka."
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	default_ammo = /datum/ammo/bullet/smg/acp/incendiary
+	default_ammo = /datum/ammo/bullet/pistol/incendiary
+
+/obj/item/ammo_magazine/smg/vector/hp
+	name = "\improper Vector holowpoint drum magazine (.9mm)"
+	desc = "A .9mm drum magazine for the Vector, with even more dakka."
+	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
+	default_ammo = /datum/ammo/bullet/pistol/hp
+
+/obj/item/ammo_magazine/smg/vector/ap
+	name = "\improper Vector ap drum magazine (.9mm)"
+	desc = "A .9mm drum magazine for the Vector, with even more dakka."
+	ammo_band_color = AMMO_BAND_COLOR_AP
+	default_ammo = /datum/ammo/bullet/pistol/ap
 
 //------------------------------------------------------
 //C17 riot PDW

@@ -89,9 +89,13 @@
 	desc = "An enhanced and upgraded autoloading mechanism to fire rounds more quickly. \nHowever, it also reduces accuracy and the number of bullets fired on burst."
 	slot = ATTACHMENT_SLOT_RAIL
 	icon_state = "autoloader"
-	accuracy_mod = -0.10
-	delay_mod = -0.125 SECONDS
-	burst_mod = -1
+	accuracy_mod = 2
+	delay_mod = -0.6 SECONDS
+	recoil_mod = 1
+	scatter_mod = 3
+	damage_falloff_mod = 2
+	wield_delay_mod = 1
+	damage_mod = -0.35
 	accuracy_unwielded_mod = -0.15
 
 /obj/item/attachable/magnetic_harness

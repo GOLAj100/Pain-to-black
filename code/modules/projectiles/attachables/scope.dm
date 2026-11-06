@@ -35,6 +35,16 @@
 	desc = "A rail-mounted night vision scope developed by Roh-Easy industries for the TGMC. Allows zoom by activating the attachment."
 	has_nightvision = TRUE
 
+/obj/item/attachable/scope/b12_scope
+	name = "B12 Smart scope"
+	icon_state = "big"
+	desc = "A Smart scope rail-mounted night vision developed by Roh-Easy industries for the TGMC. Allows zoom by activating the attachment."
+	has_nightvision = TRUE
+	damage_mod = -0.15
+	aim_speed_mod = -1
+	aim_mode_delay_mod = -1
+	add_aim_mode = TRUE
+
 /obj/item/attachable/scope/optical
 	name = "T-49 Optical imaging scope"
 	icon_state = "imagerscope"
@@ -56,6 +66,7 @@
 	desc = "A custom rail mounted zoom sight scope designed specifically for the R-76 Magnum. Allows zoom by activating the attachment."
 	icon = 'icons/obj/items/attachments/attachments_64.dmi'
 	icon_state = "t76scope"
+	has_nightvision = TRUE
 
 /obj/item/attachable/scope/unremovable
 	attach_features_flags = ATTACH_ACTIVATION
@@ -79,6 +90,7 @@
 	aim_speed_mod = 0
 	wield_delay_mod = 0
 	desc = "A rail mounted zoom sight scope specialized for the SR-127 sniper rifle. Allows zoom by activating the attachment."
+	has_nightvision = TRUE
 
 /obj/item/attachable/scope/unremovable/hmg08
 	name = "HMG-08 long range ironsights"
@@ -155,9 +167,8 @@
 	RegisterSignals(master_gun, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_UNWIELD, COMSIG_ITEM_DROPPED), PROC_REF(zoom_item_turnoff))
 	master_gun.accuracy_mult += scoped_accuracy_mod
 	if(has_nightvision)
-		update_remote_sight(user)
-		user.reset_perspective(src)
 		active_nightvision = TRUE
+		user.reset_perspective(src)
 
 /obj/item/attachable/scope/on_unzoomed(mob/living/user)
 	if(zoom_allow_movement)
@@ -168,15 +179,13 @@
 	UnregisterSignal(master_gun, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_UNWIELD, COMSIG_ITEM_DROPPED))
 	master_gun.accuracy_mult -= scoped_accuracy_mod
 	if(has_nightvision)
-		user.update_sight()
-		user.reset_perspective(user)
 		active_nightvision = FALSE
+		user.reset_perspective(user)
 
 /obj/item/attachable/scope/update_remote_sight(mob/living/user)
 	. = ..()
-	user.see_in_dark = 32
-	user.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-	user.sync_lighting_plane_alpha()
+	user.lighting_cutoff = LIGHTING_CUTOFF_MEDIUM
+	user.sync_lighting_plane_cutoff()
 	return TRUE
 
 /obj/item/attachable/scope/zoom(mob/living/user, tileoffset, viewsize)
@@ -187,16 +196,12 @@
 	else
 		master_gun.zoom = FALSE
 
-/obj/item/attachable/scope/optical/update_remote_sight(mob/living/user)
-	. = ..()
-	user.see_in_dark = 2
-	return TRUE
-
 /obj/item/attachable/scope/unremovable/laser_sniper_scope
 	name = "Terra Experimental laser sniper rifle rail scope"
 	desc = "A marine standard mounted zoom sight scope made for the Terra Experimental laser sniper rifle otherwise known as TE-S abbreviated, allows zoom by activating the attachment. Use F12 if your HUD doesn't come back."
 	icon = 'icons/obj/items/attachments/attachments.dmi'
 	icon_state = "tes"
+	has_nightvision = TRUE
 
 /obj/item/attachable/scope/unremovable/plasma_sniper_scope
 	name = "PL-02 sniper rifle rail scope"

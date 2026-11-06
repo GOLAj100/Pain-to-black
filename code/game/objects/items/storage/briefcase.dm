@@ -27,39 +27,25 @@
 	new /obj/item/weapon/gun/revolver/standard_magnum(src)
 	new /obj/item/attachable/scope/standard_magnum(src)
 	for(var/i in 1 to 15)
-		new /obj/item/ammo_magazine/revolver/standard_magnum(src)
+		new /obj/item/ammo_magazine/revolver/t76(src)
 
 /obj/item/storage/briefcase/standard_magnum/gold/PopulateContents()
 	new /obj/item/weapon/gun/revolver/standard_magnum/fancy/gold(src)
 	new /obj/item/attachable/scope/standard_magnum(src)
 	for(var/i in 1 to 15)
-		new /obj/item/ammo_magazine/revolver/standard_magnum(src)
+		new /obj/item/ammo_magazine/revolver/t76(src)
 
 /obj/item/storage/briefcase/standard_magnum/silver/PopulateContents()
 	new /obj/item/weapon/gun/revolver/standard_magnum/fancy/silver(src)
 	new /obj/item/attachable/scope/standard_magnum(src)
 	for(var/i in 1 to 15)
-		new /obj/item/ammo_magazine/revolver/standard_magnum(src)
+		new /obj/item/ammo_magazine/revolver/t76(src)
 
 /obj/item/storage/briefcase/standard_magnum/nickle/PopulateContents()
 	new /obj/item/weapon/gun/revolver/standard_magnum/fancy/nickle(src)
 	new /obj/item/attachable/scope/standard_magnum(src)
 	for(var/i in 1 to 15)
-		new /obj/item/ammo_magazine/revolver/standard_magnum(src)
-
-/obj/item/storage/briefcase/t500
-	name = "\improper R-500 'Nigredo' special case"
-	desc = "High-tech case made by BMSS for delivery their special weapons. Label on this case says: 'This is the greatest handgun ever made. Five bullets. More than enough to kill anything that moves'."
-	icon_state = "t500case"
-	w_class = WEIGHT_CLASS_NORMAL
-	storage_type = /datum/storage/briefcase/t500
-
-/obj/item/storage/briefcase/t500/PopulateContents()
-	new /obj/item/attachable/stock/t500(src)
-	new /obj/item/attachable/lace/t500(src)
-	new /obj/item/attachable/t500_barrel/short(src)
-	new /obj/item/attachable/t500_barrel(src)
-	new /obj/item/weapon/gun/revolver/t500(src)
+		new /obj/item/ammo_magazine/revolver/t76(src)
 
 /obj/item/storage/briefcase/t312
 	name = "R-312 'Albedo' Revolver special case"
@@ -78,7 +64,7 @@
 	new /obj/item/ammo_magazine/revolver/t312/med/md(src)
 	new /obj/item/ammo_magazine/revolver/t312/med/neu(src)
 	new /obj/item/storage/pouch/medkit/t312(src)
-	new /obj/item/attachable/lace/t500(src)
+	new /obj/item/attachable/lace/t76(src)
 	new /obj/item/weapon/gun/revolver/t312(src)
 
 /obj/item/storage/briefcase/inflatable

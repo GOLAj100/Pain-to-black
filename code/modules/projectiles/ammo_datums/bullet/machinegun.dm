@@ -5,7 +5,7 @@
 	hud_state = "minigun"
 	hud_state_empty = "smartgun_empty"
 	accurate_range = 12
-	damage = 40 //Reduced damage due to vastly increased mobility
+	damage = 37 //Reduced damage due to vastly increased mobility
 	penetration = 40 //Reduced penetration due to vastly increased mobility
 	accuracy = 5
 	barricade_clear_distance = 2
@@ -27,17 +27,6 @@
 	shrapnel_chance = 25
 	sundering = 2.5
 
-/datum/ammo/bullet/minigun/ltaap
-	name = "chaingun bullet"
-	damage = 30
-	penetration = 10
-	sundering = 0
-	ammo_behavior_flags = AMMO_BALLISTIC|AMMO_IFF|AMMO_SNIPER
-	damage_falloff = 2
-	accurate_range = 7
-	accuracy = 10
-	barricade_clear_distance = 4
-
 /datum/ammo/bullet/auto_cannon
 	name = "autocannon high-velocity bullet"
 	hud_state = "minigun"
@@ -53,18 +42,18 @@
 	///Bonus flat damage to walls, balanced around resin walls.
 	var/autocannon_wall_bonus = 20
 
-/datum/ammo/bullet/auto_cannon/on_hit_turf(turf/target_turf, obj/projectile/proj)
+/datum/ammo/bullet/auto_cannon/on_hit_turf(turf/target_turf, atom/movable/projectile/proj)
 	proj.proj_max_range -= 20
 
 	if(istype(target_turf, /turf/closed/wall))
 		var/turf/closed/wall/wall_victim = target_turf
 		wall_victim.take_damage(autocannon_wall_bonus, proj.damtype, proj.armor_type)
 
-/datum/ammo/bullet/auto_cannon/on_hit_mob(mob/target_mob, obj/projectile/proj)
+/datum/ammo/bullet/auto_cannon/on_hit_mob(mob/target_mob, atom/movable/projectile/proj)
 	proj.proj_max_range -= 5
 	staggerstun(target_mob, proj, max_range = 20, slowdown = 1)
 
-/datum/ammo/bullet/auto_cannon/on_hit_obj(obj/target_object, obj/projectile/proj)
+/datum/ammo/bullet/auto_cannon/on_hit_obj(obj/target_object, atom/movable/projectile/proj)
 	proj.proj_max_range -= 5
 
 /datum/ammo/bullet/auto_cannon/flak
@@ -78,22 +67,11 @@
 	airburst_multiplier = 1
 	autocannon_wall_bonus = 5
 
-/datum/ammo/bullet/auto_cannon/flak/on_hit_mob(mob/victim, obj/projectile/proj)
+/datum/ammo/bullet/auto_cannon/flak/on_hit_mob(mob/victim, atom/movable/projectile/proj)
 	airburst(victim, proj)
 
-/datum/ammo/bullet/auto_cannon/do_at_max_range(turf/target_turf, obj/projectile/proj)
+/datum/ammo/bullet/auto_cannon/do_at_max_range(turf/target_turf, atom/movable/projectile/proj)
 	airburst(target_turf, proj)
-
-/datum/ammo/bullet/cupola
-	name = "cupola bullet"
-	bullet_color = COLOR_SOFT_RED //Red bullets to indicate friendly fire restriction
-	hud_state = "smartgun"
-	hud_state_empty = "smartgun_empty"
-	ammo_behavior_flags = AMMO_BALLISTIC|AMMO_IFF
-	accurate_range = 12
-	damage = 30
-	penetration = 10
-	sundering = 1
 
 /datum/ammo/bullet/smart_minigun
 	name = "smartminigun bullet"
@@ -107,7 +85,7 @@
 	damage_falloff = 0.1
 	var/shatter_duration = 3 SECONDS
 
-/datum/ammo/bullet/smart_minigun/on_hit_mob(mob/target_mob, obj/projectile/proj)
+/datum/ammo/bullet/smart_minigun/on_hit_mob(mob/target_mob, atom/movable/projectile/proj)
 	if(!isliving(target_mob))
 		return
 

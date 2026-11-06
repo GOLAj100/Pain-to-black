@@ -87,14 +87,14 @@
 	take_damage(tforce, BRUTE, MELEE, 1, get_dir(src, AM))
 
 
-/obj/bullet_act(obj/projectile/proj)
+/obj/bullet_act(atom/movable/projectile/proj)
 	if(istype(proj.ammo, /datum/ammo/xeno) && !(resistance_flags & XENO_DAMAGEABLE))
 		return
 	. = ..()
 	if(proj.damage < 1)
 		return
 	if(proj.damage > 30)
-		visible_message(span_warning("\the [src] is damaged by \the [proj]!"), visible_message_flags = COMBAT_MESSAGE)
+		visible_message(span_warning("\The [src] is damaged by \the [proj]!"), visible_message_flags = COMBAT_MESSAGE)
 	take_damage(proj.damage, proj.ammo.damage_type, proj.ammo.armor_type, 0, REVERSE_DIR(proj.dir), proj.ammo.penetration, isliving(proj.firer) ? proj.firer : null)
 
 /obj/proc/attack_generic(mob/user, damage_amount = 0, damage_type = BRUTE, damage_flag = MELEE, effects = TRUE, armor_penetration = 0) //used by attack_alien, attack_animal, and attack_slime

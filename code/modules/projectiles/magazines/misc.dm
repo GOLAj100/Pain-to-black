@@ -42,15 +42,6 @@
 	current_rounds = 150
 	max_rounds = 150
 
-/obj/item/ammo_magazine/packet/groza
-	name = "box of 7.62x39mm"
-	desc = "A box containing 120 rounds of 7.62x39mm."
-	caliber = CALIBER_762X39
-	icon_state = "box_76239mm"
-	default_ammo = /datum/ammo/bullet/rifle/mpi_km
-	current_rounds = 120
-	max_rounds = 120
-
 /obj/item/ammo_magazine/packet/p10x265mm
 	name = "box of 10x26.5mm"
 	desc = "A box containing 100 rounds of 10x26.5mm caseless."
@@ -105,7 +96,6 @@
 	caliber = CALIBER_10X26_CASELESS
 	current_rounds = 500
 	max_rounds = 500
-	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/ammo_magazine/packet/scout_rifle
 	name = "Box of A19 high velocity bullets"
@@ -189,16 +179,15 @@
 	desc = "A packet containing 50 rounds of pistol .45 ACP."
 	icon_state = "box_.45acp"
 	default_ammo = /datum/ammo/bullet/smg/acp
-	w_class = WEIGHT_CLASS_NORMAL
 	caliber = CALIBER_45ACP
 	current_rounds = 160
 	max_rounds = 160
 
-/obj/item/ammo_magazine/packet/rifle762X39
+/obj/item/ammo_magazine/packet/rifle762x39
 	name = "box of 7.62X39"
+	desc = "A box containing 150 rounds of 7.62x39mm."
 	icon_state = "box_7.62x39mm"
 	default_ammo = /datum/ammo/bullet/rifle/mpi_km
-	w_class = WEIGHT_CLASS_NORMAL
 	caliber = CALIBER_762X39
 	current_rounds = 150
 	max_rounds = 150
@@ -207,10 +196,17 @@
 	name = "box of 7.62X54"
 	icon_state = "box_7.62x54mm"
 	default_ammo = /datum/ammo/bullet/sniper/svd
-	w_class = WEIGHT_CLASS_NORMAL
 	caliber = CALIBER_762X54
 	current_rounds = 50
 	max_rounds = 50
+
+/obj/item/ammo_magazine/packet/mosin
+	name = "packet of 7.62X54"
+	icon_state = "7.62"
+	default_ammo = /datum/ammo/bullet/sniper/svd
+	caliber = CALIBER_762X54
+	current_rounds = 30
+	max_rounds = 30
 
 /obj/item/ammo_magazine/packet/p9mm/incendiary
 	name = "packet of 9mm incendiary"
@@ -288,25 +284,25 @@
 	current_rounds = 120
 	max_rounds = 120
 
-/obj/item/ammo_magazine/packet/t500
-	name = "packet of .500 Nigro Express"
+/obj/item/ammo_magazine/packet/r76
+	name = "packet of .R-76 Nigro Express"
 	icon_state = "boxt500"
-	default_ammo = /datum/ammo/bullet/revolver/t500
+	default_ammo = /datum/ammo/bullet/revolver/t76
 	caliber = CALIBER_500
 	w_class = WEIGHT_CLASS_SMALL
 	current_rounds = 50
 	max_rounds = 50
 	used_casings = 5
 
-/obj/item/ammo_magazine/packet/t500/qk
-	name = "packet of .500 'Queen Killer'"
+/obj/item/ammo_magazine/packet/r76/qk
+	name = "packet of .R-76 'Queen Killer'"
 	icon_state = "boxt500_qk"
-	default_ammo = /datum/ammo/bullet/revolver/t500/qk
+	default_ammo = /datum/ammo/bullet/revolver/t76/qk
 
-/obj/item/ammo_magazine/packet/t500/slavs
+/obj/item/ammo_magazine/packet/r76/faust
 	name = "packet of .500 'Slavs'"
 	icon_state = "boxt500_sv"
-	default_ammo = /datum/ammo/bullet/revolver/t500/slavs
+	default_ammo = /datum/ammo/bullet/revolver/t76/faust
 
 /obj/item/ammo_magazine/packet/t312
 	name = "packet of .500 White Express"
@@ -319,7 +315,7 @@
 	max_rounds = 50
 	used_casings = 5
 
-/obj/item/ammo_magazine/packet/t312/Initialize()
+/obj/item/ammo_magazine/packet/t312/Initialize(mapload)
 	. = ..()
 	if(prob(1))
 		icon_state = "boxt500_ke"
@@ -375,6 +371,15 @@
 	current_rounds = 200
 	max_rounds = 200
 
+/obj/item/ammo_magazine/packet/sg153
+	name = "box of 12.7mm Smart Magnum"
+	desc = "A box containing 25 rounds of 12.7mm spotting rifle rounds."
+	icon_state = "sg153"
+	default_ammo = /datum/ammo/bullet/sg153
+	caliber = CALIBER_12X7
+	current_rounds = 25
+	max_rounds = 25
+
 /obj/item/ammo_magazine/packet/musket
 	name = "sack of musket lead rounds"
 	desc = "A sack filled with lead bullets."
@@ -382,7 +387,6 @@
 	default_ammo = /datum/ammo/bullet/sniper/musket
 	max_rounds = 54
 	caliber = CALIBER_19MM
-	w_class = WEIGHT_CLASS_NORMAL
 	icon_state_mini = "musket_sack_m"
 
 /obj/item/ammo_magazine/packet/musket/small

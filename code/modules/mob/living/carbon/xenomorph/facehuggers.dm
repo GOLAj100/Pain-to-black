@@ -286,7 +286,7 @@
 
 	if(!about_to_jump)
 		return
-	add_overlay(image('icons/obj/items/grenade.dmi', "danger"))
+	add_overlay(image('icons/effects/danger.dmi', "danger_xeno"))
 
 ///Applies an alert overlay when the hugger is about to jump
 /obj/item/clothing/mask/facehugger/proc/apply_danger_overlay()
@@ -310,7 +310,7 @@
 		return FALSE
 
 	if(isturf(loc))
-		var/obj/alien/egg/hugger/E = locate() in loc
+		var/obj/alien/egg/facehugger/E = locate() in loc
 		if(E?.insert_new_hugger(src))
 			return FALSE
 		var/obj/structure/xeno/trap/T = locate() in loc
@@ -666,7 +666,7 @@
 	kill_hugger()
 	user.changeNext_move(CLICK_CD_MELEE)
 
-/obj/item/clothing/mask/facehugger/bullet_act(obj/projectile/proj)
+/obj/item/clothing/mask/facehugger/bullet_act(atom/movable/projectile/proj)
 	. = ..()
 	if(proj.ammo.ammo_behavior_flags & AMMO_XENO)
 		return FALSE //Xeno spits ignore huggers.
@@ -823,8 +823,11 @@
 		visible_message(span_danger("[src] explodes into a mess of viscous resin!"))
 		playsound(loc, SFX_ALIEN_RESIN_BUILD, 50, 1)
 		for(var/turf/sticky_tile AS in RANGE_TURFS(1, loc))
-			if(!locate(/obj/alien/resin/sticky) in sticky_tile)
-				new /obj/alien/resin/sticky/thin(sticky_tile)
+			if(isclosedturf(sticky_tile))
+				continue
+			if(locate(/obj/alien/resin/sticky) in sticky_tile)
+				continue
+			new /obj/alien/resin/sticky/thin(sticky_tile)
 		for(var/mob/living/target in range(1, loc))
 			if(isxeno(target)) //Xenos aren't affected by sticky resin
 				continue

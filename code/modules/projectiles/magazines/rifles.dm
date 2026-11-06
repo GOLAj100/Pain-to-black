@@ -56,6 +56,12 @@
 	ammo_band_color = AMMO_BAND_COLOR_AP
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
+/obj/item/ammo_magazine/rifle/ar18/incendiary
+	name = "\improper AR-18 incendiary magazine (10x24mm)"
+	desc = "A 10mm incendiary assault rifle magazine."
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
+	default_ammo = /datum/ammo/bullet/rifle/incendiary
+
 //-------------------------------------------------------
 //AR12 Assault Rifle
 
@@ -68,7 +74,18 @@
 	ammo_band_icon = "t12_band"
 	w_class = WEIGHT_CLASS_NORMAL
 	default_ammo = /datum/ammo/bullet/rifle
-	max_rounds = 50
+	max_rounds = 40
+
+/obj/item/ammo_magazine/rifle/ar12/extended
+	name = "\improper AR-12 extended magazine (10x24mm)"
+	desc = "A 10mm extended assault rifle magazine."
+	caliber = CALIBER_10X24_CASELESS
+	icon_state = "t12_ext"
+	icon_state_mini = "mag_rifle_big_yellow"
+	ammo_band_icon = "t12_band"
+	ammo_band_color = AMMO_BAND_COLOR_EXTENDED
+	bonus_overlay = "t12_ext"
+	max_rounds = 60
 
 /obj/item/ammo_magazine/rifle/ar12/incendiary
 	name = "\improper AR-12 incendiary magazine (10x24mm)"
@@ -87,6 +104,17 @@
 	icon_state_mini = "mag_rifle_big"
 	w_class = WEIGHT_CLASS_NORMAL
 	default_ammo = /datum/ammo/bullet/rifle/dmr37
+	max_rounds = 20
+
+/obj/item/ammo_magazine/rifle/dmr37/f
+	name = "\improper DMR-37 Faust magazine (10x27mm)"
+	desc = "A 10mm DMR magazine."
+	caliber = CALIBER_10X27_CASELESS
+	icon_state = "t37f"
+	bonus_overlay = "t37f"
+	icon_state_mini = "mag_rifle_big"
+	w_class = WEIGHT_CLASS_NORMAL
+	default_ammo = /datum/ammo/bullet/rifle/dmr37/f
 	max_rounds = 20
 
 //-------------------------------------------------------
@@ -112,31 +140,6 @@
 	icon_state = "m41a"
 	icon_state_mini = "mag_rifle_big_light"
 	max_rounds = 95
-
-// TypeSh12-Saiga 6
-/obj/item/ammo_magazine/rifle/typesh12
-	name = "Typesh12 buckshot magazine"
-	desc = "25 A buckshot magazine."
-	icon_state = "typesh12b"
-	caliber = CALIBER_12G
-	bonus_overlay = "typesh12"
-	default_ammo = /datum/ammo/bullet/shotgun/buckshot
-	max_rounds = 25
-	scatter_mod = 2
-	wield_delay_mod = 0.5 SECONDS
-
-/obj/item/ammo_magazine/rifle/typesh12/slug
-	name = "Typesh12 slug magazine"
-	desc = "25 A slug magazine."
-	icon_state = "typesh12s"
-	default_ammo = /datum/ammo/bullet/shotgun/slug
-
-
-/obj/item/ammo_magazine/rifle/typesh12/flechette
-	name = "Typesh12 flechette magazine"
-	desc = "25 A flechette magazine."
-	icon_state = "typesh12f"
-	default_ammo = /datum/ammo/bullet/shotgun/flechette
 
 
 //-------------------------------------------------------
@@ -291,7 +294,19 @@
 	caliber = CALIBER_10X24_CASELESS
 	default_ammo = /datum/ammo/bullet/rifle
 	w_class = WEIGHT_CLASS_NORMAL
-	max_rounds = 120
+	max_rounds = 150
+
+/obj/item/ammo_magazine/mg42/back
+	name = "\improper MG-42 GPMG buttpack magazine (10x24mm)"
+	desc = "A buttpack for the MG-42 which carries the ammo inside."
+	icon_state = "t42_back"
+	bonus_overlay = "t42_combat"
+	equip_slot_flags = ITEM_SLOT_BACK
+	magazine_flags = MAGAZINE_WORN
+	w_class = WEIGHT_CLASS_HUGE
+	max_rounds = 500
+	reload_delay = 2 SECONDS
+
 
 //-------------------------------------------------------
 //MG-60 General Purpose Machine Gun
@@ -386,7 +401,7 @@
 //SPOTTING RIFLE AMMUNITION
 
 /obj/item/ammo_magazine/rifle/sg153
-	name = "\improper SG-153 magazine (12x7mm)"
+	name = "\improper SG-153 magazine (12x7mm Smart Magnum)"
 	desc = "A magazine filled with 12x7mm lethal smart rounds, these will do nothing other than pack a big punch."
 	caliber = CALIBER_12X7
 	icon_state = "sg153"
@@ -396,37 +411,37 @@
 	icon_state_mini = "mag_sg29"
 
 /obj/item/ammo_magazine/rifle/sg153/highimpact
-	name = "\improper SG-153 high impact magazine (12x7mm)"
+	name = "\improper SG-153 high impact magazine (12x7mm Smart Magnum)"
 	desc = "A magazine filled with 12x7mm high impact smart rounds, these will likely stagger and slow anything they hit."
 	icon_state = "sg153_hi"
 	default_ammo = /datum/ammo/bullet/sg153/highimpact
 
 /obj/item/ammo_magazine/rifle/sg153/heavyrubber
-	name = "\improper SG-153 heavy rubber magazine (12x7mm)"
+	name = "\improper SG-153 heavy rubber magazine (12x7mm Smart Magnum)"
 	desc = "A magazine filled with 12x7mm heavy rubber smart rounds, these will likely stun and displace anything they hit."
 	icon_state = "sg153_hr"
 	default_ammo = /datum/ammo/bullet/sg153/heavyrubber
 
 /obj/item/ammo_magazine/rifle/sg153/plasmaloss
-	name = "\improper SG-153 tanglefoot magazine (12x7mm)"
+	name = "\improper SG-153 tanglefoot magazine (12x7mm Smart Magnum)"
 	desc = "A magazine filled with 12x7mm smart rounds tipped with 'Tanglefoot' poison, these rounds will drain the energy out of targets they hit."
 	icon_state = "sg153_hr"
 	default_ammo = /datum/ammo/bullet/sg153/plasmaloss
 
 /obj/item/ammo_magazine/rifle/sg153/tungsten
-	name = "\improper SG-153 tungsten magazine (12x7mm)"
+	name = "\improper SG-153 tungsten magazine (12x7mm Smart Magnum)"
 	desc = "A magazine filled with 12x7mm tungsten smart rounds, these rounds will massively knock back any target it hits."
 	icon_state = "sg153_tg"
 	default_ammo = /datum/ammo/bullet/sg153/tungsten
 
 /obj/item/ammo_magazine/rifle/sg153/incendiary
-	name = "\improper SG-153 incendiary magazine (12x7mm)"
+	name = "\improper SG-153 incendiary magazine (12x7mm Smart Magnum)"
 	desc = "A magazine filled with 12x7mm incendiary smart rounds, these rounds will set alight anything they hit."
 	icon_state = "sg153_ic"
 	default_ammo = /datum/ammo/bullet/sg153/incendiary
 
 /obj/item/ammo_magazine/rifle/sg153/flak
-	name = "\improper SG-153 flak magazine (12x7mm)"
+	name = "\improper SG-153 flak magazine (12x7mm Smart Magnum)"
 	desc = "A magazine filled with 12x7mm flak smart rounds, these rounds will airburst on contact with an organic target, causing damage in a small area near the target."
 	icon_state = "sg153_fl"
 	default_ammo = /datum/ammo/bullet/sg153/flak
@@ -451,7 +466,6 @@
 	desc = "A box magazine filled with 8.6x70mm rifle rounds for the SR-127."
 	caliber = CALIBER_86X70
 	icon_state = "tl127"
-	icon_state_mini = "mag_rifle_big"
 	default_ammo = /datum/ammo/bullet/sniper/pfc
 	max_rounds = 10
 	bonus_overlay = "tl127_mag"
@@ -460,10 +474,16 @@
 /obj/item/ammo_magazine/rifle/sr127/flak
 	name = "SR-127 bolt action rifle flak magazine"
 	desc = "A box magazine filled with 8.6x70mm rifle flak rounds for the SR-127."
-	icon_state_mini = "mag_sniper_blue"
 	default_ammo = /datum/ammo/bullet/sniper/pfc/flak
-	bonus_overlay = "tl127_flak"
 	ammo_band_color = AMMO_BAND_COLOR_IMPACT
+	bonus_overlay = "tl127_flak"
+
+/obj/item/ammo_magazine/rifle/sr127/heapin
+	name = "SR-127 bolt action rifle heapin magazine"
+	desc = "A box magazine filled with 8.6x70mm rifle heapin rounds for the SR-127."
+	default_ammo = /datum/ammo/bullet/sniper/pfc/heapin
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
+	bonus_overlay = "tl127_heapin"
 
 //-------------------------------------------------------
 //Marine magazine automatic sniper, or the SR-81.

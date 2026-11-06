@@ -118,7 +118,7 @@
 
 	var/datum/ammo/xeno/acid/heavy/scatter/scatter_spit = GLOB.ammo_list[/datum/ammo/xeno/acid/heavy/scatter]
 
-	var/obj/projectile/newspit = new /obj/projectile(get_turf(xeno_owner))
+	var/atom/movable/projectile/newspit = new /atom/movable/projectile(get_turf(xeno_owner))
 	newspit.generate_bullet(scatter_spit, scatter_spit.damage * SPIT_UPGRADE_BONUS(xeno_owner))
 	newspit.def_zone = xeno_owner.get_limbzone_target()
 
@@ -144,6 +144,9 @@
 	ability_cost = 75
 	cooldown_duration = 45 SECONDS
 	nade_type = /obj/item/explosive/grenade/sticky/xeno
+	keybinding_signals = list(
+		KEYBINDING_NORMAL = COMSIG_XENOABILITY_SLIME_GRENADE,
+	)
 
 /datum/action/ability/activable/xeno/toxic_grenade/sticky/grenade_act(atom/our_atom)
 	var/obj/item/explosive/grenade/sticky/xeno/nade = new nade_type(get_turf(owner))

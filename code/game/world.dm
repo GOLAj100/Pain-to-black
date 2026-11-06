@@ -343,8 +343,8 @@ GLOBAL_VAR(restart_counter)
 
 	var/new_status = ""
 	new_status += "<b><a href='[discord_url ? discord_url : "#"]'>[server_name]</a></b>"
-	new_status += "<br>Map: <b>[map_name]</b>" //RUTGMC EDIT
-	new_status += "<br>Ship: <b>[shipname]</b>" //RUTGMC EDIT
+	new_status += "<br>Map: <b>[map_name]</b>"
+	new_status += "<br>Ship: <b>[shipname]</b>"
 	new_status += "<br>Mode: <b>[SSticker.mode ? SSticker.mode.name : "Lobby"]</b>"
 	new_status += "<br>Round time: <b>[gameTimestamp("hh:mm")]</b>"
 
@@ -352,19 +352,47 @@ GLOBAL_VAR(restart_counter)
 	status = new_status
 
 /**
- * Handles incresing the world's maxx var and intializing the new turfs and assigning them to the global area.
+ * Handles increasing the world's maxx var and initializing the new turfs and assigning them to the global area.
  * If map_load_z_cutoff is passed in, it will only load turfs up to that z level, inclusive.
  * This is because maploading will handle the turfs it loads itself.
  */
-/world/proc/increase_max_x(new_maxx)
+/world/proc/increase_max_x(new_maxx, map_load_z_cutoff = maxz)
 	if(new_maxx <= maxx)
 		return
+	var/old_max = world.maxx
 	maxx = new_maxx
+	if(!map_load_z_cutoff)
+		return
+	var/area/global_area = GLOB.areas_by_type[world.area] // We're guaranteed to be touching the global area, so we'll just do this
+	LISTASSERTLEN(global_area.turfs_by_zlevel, map_load_z_cutoff, list())
+	for(var/zlevel in 1 to map_load_z_cutoff)
+		var/list/to_add = block(
+			old_max + 1, 1, zlevel,
+			maxx, maxy, zlevel
+		)
 
-/world/proc/increase_max_y(new_maxy)
+		global_area.turfs_by_zlevel[zlevel] += to_add
+
+/**
+ * Handles increasing the world's maxy var and initializing the new turfs and assigning them to the global area.
+ * If map_load_z_cutoff is passed in, it will only load turfs up to that z level, inclusive.
+ * This is because maploading will handle the turfs it loads itself.
+ */
+/world/proc/increase_max_y(new_maxy, map_load_z_cutoff = maxz)
 	if(new_maxy <= maxy)
 		return
+	var/old_maxy = maxy
 	maxy = new_maxy
+	if(!map_load_z_cutoff)
+		return
+	var/area/global_area = GLOB.areas_by_type[world.area] // We're guaranteed to be touching the global area, so we'll just do this
+	LISTASSERTLEN(global_area.turfs_by_zlevel, map_load_z_cutoff, list())
+	for(var/zlevel in 1 to map_load_z_cutoff)
+		var/list/to_add = block(
+			1, old_maxy + 1, 1,
+			maxx, maxy, map_load_z_cutoff
+		)
+		global_area.turfs_by_zlevel[zlevel] += to_add
 
 /world/proc/incrementMaxZ()
 	maxz++

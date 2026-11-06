@@ -132,6 +132,7 @@
 	///Delay between throwing.
 	var/throw_delay = 0.2 SECONDS
 	///Current Target that knives are being thrown at. This is for aiming
+	var/knockback_paralyze_amount = 2 SECONDS
 	var/current_target
 	///The person throwing knives
 	var/mob/living/living_user

@@ -2,7 +2,7 @@
 GLOBAL_LIST_EMPTY(all_huds)
 
 //GLOBAL HUD LIST
-GLOBAL_LIST_INIT_TYPED(huds, /datum/atom_hud, list(
+GLOBAL_LIST_INIT_TYPED(huds, /datum/atom_hud, alist(
 	DATA_HUD_BASIC = new /datum/atom_hud/simple,
 	DATA_HUD_MEDICAL_BASIC = new /datum/atom_hud/medical/basic,
 	DATA_HUD_MEDICAL_ADVANCED = new /datum/atom_hud/medical/advanced,

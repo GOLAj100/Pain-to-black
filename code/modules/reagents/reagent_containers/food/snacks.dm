@@ -339,7 +339,7 @@
 		return
 	new/obj/effect/decal/cleanable/egg_smudge(src.loc)
 	src.reagents.reaction(hit_atom, TOUCH)
-	src.visible_message(span_warning(" [src.name] has been squashed."),span_warning(" You hear a smack."))
+	src.visible_message(span_warning("[src.name] has been squashed."),span_warning("You hear a smack."))
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/egg/blue
@@ -1250,7 +1250,7 @@
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"
 
-/obj/item/reagent_containers/food/snacks/meat/xenomeat/Initialize()
+/obj/item/reagent_containers/food/snacks/meat/xenomeat/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent(/datum/reagent/toxin/acid, 3)
 	src.bitesize = 6

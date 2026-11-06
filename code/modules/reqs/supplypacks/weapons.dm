@@ -2,44 +2,6 @@
 	group = "Weapons"
 	containertype = /obj/structure/closet/crate/weapon
 
-/datum/supply_packs/weapons/saiga12
-	name = "СВЯТОГОР"
-	contains = list(
-		/obj/item/weapon/gun/rifle/saiga12,
-		/obj/item/ammo_magazine/rifle/typesh12/slug,
-		/obj/item/ammo_magazine/rifle/typesh12/slug,
-		/obj/item/ammo_magazine/rifle/typesh12/flechette,
-		)
-	cost = 750
-
-/datum/supply_packs/weapons/typesh12s
-	name = "СВЯТОГОР slug magazine x3"
-	contains = list(
-		/obj/item/ammo_magazine/rifle/typesh12/slug,
-		/obj/item/ammo_magazine/rifle/typesh12/slug,
-		/obj/item/ammo_magazine/rifle/typesh12/slug,
-		)
-	cost = 230	
-
-/datum/supply_packs/weapons/typesh12b
-	name = "СВЯТОГОР buckshot magazine x3"
-	contains = list(
-		/obj/item/ammo_magazine/rifle/typesh12,
-		/obj/item/ammo_magazine/rifle/typesh12,
-		/obj/item/ammo_magazine/rifle/typesh12,
-		)
-	cost = 230	
-
-/datum/supply_packs/weapons/typesh12f
-	name = "СВЯТОГОР flechette magazine x3"
-	contains = list(
-		/obj/item/ammo_magazine/rifle/typesh12/flechette,
-		/obj/item/ammo_magazine/rifle/typesh12/flechette,
-		/obj/item/ammo_magazine/rifle/typesh12/flechette,
-		)
-	cost = 230	
-
-
 /datum/supply_packs/weapons/tesla
 	name = "Tesla shock rifle"
 	contains = list(/obj/item/weapon/gun/energy/lasgun/lasrifle/tesla)
@@ -248,6 +210,11 @@
 	contains = list(/obj/item/ammo_magazine/rifle/sr127/flak)
 	cost = 50
 
+/datum/supply_packs/weapons/mg42_pack
+	name = "MG-42 combatpack"
+	contains = list(/obj/item/ammo_magazine/mg42/back)
+	cost = 300
+
 /datum/supply_packs/weapons/rechargemag
 	name = "Terra Experimental TE-X recharger battery"
 	contains = list(/obj/item/cell/lasgun/lasrifle/recharger)
@@ -279,11 +246,6 @@
 	contains = list(/obj/item/weapon/twohanded/glaive/halberd/harvester)
 	cost = 600
 
-/datum/supply_packs/weapons/t500case
-	name = "R-500 bundle"
-	contains = list(/obj/item/storage/briefcase/t500)
-	cost = 50
-
 /datum/supply_packs/weapons/r76case
 	name = "R76 bundle"
 	contains = list(/obj/item/storage/briefcase/standard_magnum)
@@ -292,10 +254,10 @@
 /datum/supply_packs/weapons/r76_speedloader
 	name = "R76 speedloader (x4)"
 	contains = list(
-		/obj/item/ammo_magazine/revolver/standard_magnum,
-		/obj/item/ammo_magazine/revolver/standard_magnum,
-		/obj/item/ammo_magazine/revolver/standard_magnum,
-		/obj/item/ammo_magazine/revolver/standard_magnum,
+		/obj/item/ammo_magazine/revolver/t76,
+		/obj/item/ammo_magazine/revolver/t76,
+		/obj/item/ammo_magazine/revolver/t76,
+		/obj/item/ammo_magazine/revolver/t76,
 	)
 	cost = 40
 
@@ -305,28 +267,16 @@
 	cost = 30 //50 rounds
 	containertype = /obj/structure/closet/crate/ammo
 
-/datum/supply_packs/weapons/type16_extended_mag
-	name = "Type-16 extended magazine"
-	contains = list(/obj/item/ammo_magazine/rifle/type16/extended)
-	cost = 15
-	containertype = /obj/structure/closet/crate/ammo
-
-/datum/supply_packs/weapons/smg25_ap
-	name = "SMG-25 armor piercing magazine"
-	contains = list(/obj/item/ammo_magazine/smg/m25/ap)
-	cost = 30 //60 rounds
+/datum/supply_packs/weapons/ar21_extended_mag
+	name = "AR-21 extended magazine"
+	contains = list(/obj/item/ammo_magazine/rifle/ar21/extended)
+	cost = 50 //50 rounds
 	containertype = /obj/structure/closet/crate/ammo
 
 /datum/supply_packs/weapons/p9mm_incendiary
 	name = "9mm incendiary packet"
 	contains = list(/obj/item/ammo_magazine/packet/p9mm/incendiary)
 	cost = 30 //70 rounds
-	containertype = /obj/structure/closet/crate/ammo
-
-/datum/supply_packs/weapons/box_10x20mm_ap
-	name = "10x20mm armor piercing ammo box"
-	contains = list(/obj/item/ammo_magazine/packet/p10x20mm/ap)
-	cost = 50 //150 rounds
 	containertype = /obj/structure/closet/crate/ammo
 
 /datum/supply_packs/weapons/plasma_cells

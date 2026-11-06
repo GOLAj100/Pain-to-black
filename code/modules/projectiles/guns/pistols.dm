@@ -27,7 +27,6 @@
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/flashlight/under,
 		/obj/item/attachable/gyro,
-		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/lace,
 		/obj/item/attachable/buildasentry,
 	)
@@ -51,13 +50,33 @@
 	icon_state = "tp14"
 	worn_icon_state = "tp14"
 	caliber = CALIBER_9X19 //codex
-	max_shells = 21 //codex
+	max_shells = 20 //codex
 	fire_sound = 'sound/weapons/guns/fire/tgmc/kinetic/gun_p14.ogg'
 	reload_sound = 'sound/weapons/guns/interact/tp14_reload.ogg'
 	default_ammo_type = /obj/item/ammo_magazine/pistol/p14
-	allowed_ammo_types = list(/obj/item/ammo_magazine/pistol/p14)
+	allowed_ammo_types = list(
+	/obj/item/ammo_magazine/pistol/p14,
+	/obj/item/ammo_magazine/pistol/p14/ap,
+	/obj/item/ammo_magazine/pistol/p14/hp,
+	/obj/item/ammo_magazine/pistol/p14/incendiary,
+	/obj/item/ammo_magazine/pistol/p14/ext,
+	)
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/lasersight,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/stock/p14stock,
+		/obj/item/attachable/flashlight/under,
+		/obj/item/attachable/gyro,
+		/obj/item/attachable/lace,
+		/obj/item/attachable/buildasentry,
+	)
 
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 25, "under_y" = 14, "stock_x" = 21, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 25, "under_y" = 14, "stock_x" = 8, "stock_y" = 11)
 
 	fire_delay = 0.15 SECONDS
 	accuracy_mult = 1.1

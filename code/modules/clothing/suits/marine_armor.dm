@@ -188,6 +188,32 @@
 /obj/item/clothing/suit/storage/marine/B17/valhalla
 	item_flags = NONE
 
+/obj/item/clothing/suit/storage/marine/B16
+	name = "\improper B16 defensive armor"
+	desc = "The older brother of the B10. Practically an armored EOD suit made for use by close quarter explosive experts."
+	icon_state = "m_combat"
+	soft_armor = list(MELEE = 65, BULLET = 80, LASER = 80, ENERGY = 65, BOMB = 80, BIO = 65, FIRE = 80, ACID = 65)
+	max_heat_protection_temperature = HEAVYARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	item_flags = SYNTH_RESTRICTED|IMPEDE_JETPACK|AUTOBALANCE_CHECK
+
+/obj/item/clothing/suit/storage/marine/B16/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/suit_autodoc)
+	AddComponent(/datum/component/stun_mitigation, slot_override = SLOT_WEAR_SUIT, shield_cover = list(MELEE = 50, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 50, BIO = 50, FIRE = 50, ACID = 50))
+	AddElement(/datum/element/limb_support)
+	if(item_flags & AUTOBALANCE_CHECK)
+		SSmonitor.stats.b18_in_use += src
+
+/obj/item/clothing/suit/storage/marine/B16/Destroy()
+	if(item_flags & AUTOBALANCE_CHECK)
+		SSmonitor.stats.b18_in_use -= src
+	return ..()
+
+/obj/item/clothing/suit/storage/marine/B16/valhalla
+	item_flags = NONE
+
+
 ////////////////////////////////
 
 /obj/item/clothing/suit/storage/marine/ship_tech

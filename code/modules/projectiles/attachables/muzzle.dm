@@ -55,7 +55,7 @@
 		knife.forceMove(loc)
 	qdel(src) //Delete da old bayonet
 
-/obj/item/attachable/bayonetknife
+/obj/item/attachable/bayonetknife //todo: why the flying dicks is this not a subtype of above?
 	name = "M-22 bayonet"
 	desc = "A sharp knife that is the standard issue combat knife of the TerraGov Marine Corps can be attached to a variety of weapons at will or used as a standard knife."
 	icon = 'icons/obj/items/weapons.dmi'
@@ -64,7 +64,7 @@
 		slot_l_hand_str = 'icons/mob/inhands/weapons/melee_left.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/weapons/melee_right.dmi',
 	)
-	force = 25
+	force = 30
 	throwforce = 20
 	throw_speed = 3
 	throw_range = 6

@@ -31,7 +31,7 @@
 
 	// *** Ranged Attack *** //
 	spit_delay = 1 SECONDS
-	spit_types = list(/datum/ammo/xeno/acid/heavy/passthrough, /datum/ammo/xeno/tox_loss/heavy)
+	spit_types = list(/datum/ammo/xeno/acid/heavy/passthrough)
 	acid_spray_duration = 6 SECONDS
 	acid_spray_damage = 8
 	acid_spray_duration = 10 SECONDS
@@ -106,6 +106,7 @@
 		/datum/action/ability/activable/xeno/corrosive_acid/strong,
 		/datum/action/ability/xeno_action/dodge,
 		/datum/action/ability/activable/xeno/impale,
+		/datum/action/ability/activable/xeno/tail_hook,
 		/datum/action/ability/activable/xeno/tail_trip,
 	)
 
@@ -127,6 +128,8 @@
 		/datum/action/ability/activable/xeno/corrosive_acid/strong,
 		/datum/action/ability/xeno_action/dodge,
 		/datum/action/ability/activable/xeno/impale,
+		/datum/action/ability/activable/xeno/tail_hook,
 		/datum/action/ability/activable/xeno/tail_trip,
-		/datum/action/ability/activable/xeno/charge/acid_dash, // No unique primordial ability at the moment. Replace eventually with something cooler!
+		/datum/action/ability/activable/xeno/charge/acid_dash,
+		/datum/action/ability/activable/xeno/baton_pass,
 	)

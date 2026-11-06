@@ -20,16 +20,16 @@
 		return
 	target_turf.ignite(burn_time, burn_level, fire_color)
 
-/datum/ammo/flamethrower/on_hit_mob(mob/target_mob, obj/projectile/proj)
+/datum/ammo/flamethrower/on_hit_mob(mob/target_mob, atom/movable/projectile/proj)
 	drop_flame(get_turf(target_mob))
 
-/datum/ammo/flamethrower/on_hit_obj(obj/target_object, obj/projectile/proj)
+/datum/ammo/flamethrower/on_hit_obj(obj/target_object, atom/movable/projectile/proj)
 	drop_flame(get_turf(target_object))
 
-/datum/ammo/flamethrower/on_hit_turf(turf/target_turf, obj/projectile/proj)
+/datum/ammo/flamethrower/on_hit_turf(turf/target_turf, atom/movable/projectile/proj)
 	drop_flame(get_turf(target_turf))
 
-/datum/ammo/flamethrower/do_at_max_range(turf/target_turf, obj/projectile/proj)
+/datum/ammo/flamethrower/do_at_max_range(turf/target_turf, atom/movable/projectile/proj)
 	drop_flame(get_turf(target_turf))
 
 /datum/ammo/flamethrower/tank_flamer/drop_flame(turf/target_turf)
@@ -55,14 +55,6 @@
 	burn_level = 18
 	bullet_color = LIGHT_COLOR_ELECTRIC_GREEN
 
-/datum/ammo/flamethrower/armored_spray // armored vehicle flamer that sprays a visual continual flame
-	name = "spraying flames"
-	icon_state = "spray_flamer"
-	max_range = 7
-	shell_speed = 0.3
-	damage = 6
-	burn_time = 0.3 SECONDS
-
 /datum/ammo/water
 	name = "water"
 	icon_state = "pulse1"
@@ -84,14 +76,14 @@
 			caught_mob.ExtinguishMob()
 	new /obj/effect/temp_visual/dir_setting/water_splash(extinguished_turf, splash_direction)
 
-/datum/ammo/water/on_hit_mob(mob/target_mob, obj/projectile/proj)
+/datum/ammo/water/on_hit_mob(mob/target_mob, atom/movable/projectile/proj)
 	splash(get_turf(target_mob), proj.dir)
 
-/datum/ammo/water/on_hit_obj(obj/target_object, obj/projectile/proj)
+/datum/ammo/water/on_hit_obj(obj/target_object, atom/movable/projectile/proj)
 	splash(get_turf(target_object), proj.dir)
 
-/datum/ammo/water/on_hit_turf(turf/target_turf, obj/projectile/proj)
+/datum/ammo/water/on_hit_turf(turf/target_turf, atom/movable/projectile/proj)
 	splash(get_turf(target_turf), proj.dir)
 
-/datum/ammo/water/do_at_max_range(turf/target_turf, obj/projectile/proj)
+/datum/ammo/water/do_at_max_range(turf/target_turf, atom/movable/projectile/proj)
 	splash(get_turf(target_turf), proj.dir)

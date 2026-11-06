@@ -366,7 +366,7 @@
 
 /datum/supply_packs/medical/t312
 	name = "R-312 'Albedo' revolver"
-	contains = list(/obj/item/attachable/lace/t500, /obj/item/weapon/gun/revolver/t312)
+	contains = list(/obj/item/attachable/lace/t76, /obj/item/weapon/gun/revolver/t312)
 	cost = 150
 
 /datum/supply_packs/medical/t312_adr

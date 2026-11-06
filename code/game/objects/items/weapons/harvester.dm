@@ -37,17 +37,17 @@
 	)
 	worn_icon_state = "vali_knife"
 	w_class = WEIGHT_CLASS_SMALL
-	force = 25
+	force = 20
 	throwforce = 15
 	throw_speed = 3
 	throw_range = 6
-	attack_speed = 8
+	attack_speed = 10
 	sharp = IS_SHARP_ITEM_ACCURATE
 	hitsound = 'sound/weapons/slash.ogg'
 
 /obj/item/weapon/combat_knife/harvester/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/harvester, 5)
+	AddComponent(/datum/component/harvester, 60)
 
 /obj/item/weapon/combat_knife/harvester/equipped(mob/user, slot)
 	. = ..()
@@ -118,7 +118,7 @@
 	)
 	worn_icon_state = "vali_spear"
 	force = 32
-	force_wielded = 60
+	force_activated = 60
 	throwforce = 60
 
 /obj/item/weapon/twohanded/spear/tactical/harvester/Initialize(mapload)
@@ -140,7 +140,7 @@
 		slot_r_hand_str = 'icons/mob/inhands/weapons/vali_right.dmi',
 	)
 	force = 40
-	force_wielded = 95 //Reminder: putting trama inside deals 60% additional damage
+	force_activated = 95 //Reminder: putting trama inside deals 60% additional damage
 	item_flags = TWOHANDED
 	resistance_flags = 0 //override glavie
 	attack_speed = 10 //Default is 7, this has slower attack
@@ -149,7 +149,7 @@
 	var/wielded_slowdown = 0.5 //Slowdown in hands, wielded
 	var/wield_delay = 0.8 SECONDS
 
-/obj/item/weapon/twohanded/glaive/halberd/harvester/Initialize()
+/obj/item/weapon/twohanded/glaive/halberd/harvester/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/harvester)
 

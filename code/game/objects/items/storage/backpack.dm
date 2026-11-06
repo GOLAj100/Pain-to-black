@@ -235,6 +235,7 @@
 /obj/item/storage/backpack/marine/standard
 	name = "\improper lightweight IMP backpack"
 	desc = "The standard-issue pack of the TGMC forces. Designed to slug gear into the battlefield."
+	storage_type = /datum/storage/backpack/tech
 
 /obj/item/storage/backpack/marine/standard/molle
 	name = "\improper T16 MOLLE Backpack"
@@ -246,6 +247,7 @@
 	)
 	icon_state = "MOLLEbackpack"
 	worn_icon_state = "MOLLEbackpack"
+	storage_type = /datum/storage/backpack/tech
 
 /obj/item/storage/backpack/marine/satchel/molle
 	name = "\improper T13 MOLLE Satchel"
@@ -265,6 +267,7 @@
 		slot_back_str = 'icons/mob/clothing/back.dmi')
 	icon_state = "scavpack"
 	worn_icon_state = "scavpack"
+	storage_type = /datum/storage/backpack/tech
 
 /obj/item/storage/backpack/marine/corpsman
 	name = "\improper TGMC corpsman backpack"
@@ -857,6 +860,7 @@
 	desc = "A backpack that resembles the ones old-age radio operator marines would use. It has a supply ordering console installed on it, and a retractable antenna to receive supply drops."
 	icon_state = "radiopack"
 	worn_icon_state = "radiopack"
+	storage_type = /datum/storage/backpack/satchel
 	///Var for the window pop-up
 	var/datum/supply_ui/requests/supply_interface
 

@@ -89,7 +89,7 @@
 		to_chat(user, span_warning("[src] must be in your hand to do that."))
 		return
 	//no tactical reload for the untrained.
-	if(user.skills.getRating(SKILL_FIREARMS) < SKILL_FIREARMS_DEFAULT)
+	if(user.skills.getRating(SKILL_PISTOLS) < SKILL_PISTOLS_DEFAULT)
 		to_chat(user, span_warning("You don't know how to do tactical reloads."))
 		return
 	to_chat(user, span_notice("You start a tactical reload."))
@@ -344,24 +344,24 @@
 	fire_animation = "t76_fire"
 	caliber = CALIBER_12X7 //codex
 	max_chamber_items = 5 //codex
-	default_ammo_type = /obj/item/ammo_magazine/revolver/standard_magnum
-	allowed_ammo_types = list(/obj/item/ammo_magazine/revolver/standard_magnum)
+	default_ammo_type = /obj/item/ammo_magazine/revolver/t76
+	allowed_ammo_types = list(/obj/item/ammo_magazine/revolver/t76, /obj/item/ammo_magazine/revolver/t76/faust )
 	force = 8
 	actions_types = null
 	attachable_allowed = list(
-		/obj/item/attachable/bayonet,
+		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/heavy_barrel,
-		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/lace,
 		/obj/item/attachable/shoulder_mount,
 		/obj/item/attachable/stock/t76,
 		/obj/item/attachable/scope/standard_magnum,
+		/obj/item/attachable/lace/t76,
 	)
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 15, "rail_y" = 23, "under_x" = 22, "under_y" = 15, "stock_x" = 10, "stock_y" = 18)
-	windup_delay = 0.6 SECONDS
+	windup_delay = 0.8 SECONDS
 	aim_slowdown = 0.2
 	windup_sound = 'sound/weapons/guns/fire/t76_start.ogg'
 	fire_sound = 'sound/weapons/guns/fire/tgmc/kinetic/gun_r76.ogg'
@@ -379,17 +379,16 @@
 /obj/item/weapon/gun/revolver/standard_magnum/fancy
 	starting_attachment_types = list()
 	attachable_allowed = list(
-		/obj/item/attachable/bayonet,
+		/obj/item/attachable/compensator,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/heavy_barrel,
-		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/lace,
 		/obj/item/attachable/shoulder_mount,
 		/obj/item/attachable/stock/t76,
 		/obj/item/attachable/scope/standard_magnum,
-		/obj/item/attachable/compensator,
+		/obj/item/attachable/lace/t76,
 	)
 
 /obj/item/weapon/gun/revolver/standard_magnum/fancy/gold
@@ -503,64 +502,6 @@
 	attachable_offset = list("muzzle_x" = 50, "muzzle_y" = 21,"rail_x" = 24, "rail_y" = 22)
 
 //////////////////////////////////////////////////////////////////////////
-/////////////////////////// t500 revolver ////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-
-/obj/item/weapon/gun/revolver/t500
-	name = "\improper R-500 'Nigredo' revolver"
-	desc = "The R-500 'Nigredo' revolver, chambered in .500 Nigro Express. Hard to use, but hits as hard as it’s kicks your hand. This handgun made by BMSS, designed to be deadly, unholy force to stop everything what moves, so in exchange for it, revolver lacking recoil control and have tight cocking system. Because of its specific, handcanon niche, was produced in small numbers. Black & Metzer special attachments system can turn extremely powerful handgun to fullscale rifle, making it a weapon to surpass Metal Gear."
-	icon = 'icons/obj/items/gun/pistol64.dmi'
-	icon_state = "t500"
-	worn_icon_list = list(
-		slot_l_hand_str = 'icons/mob/inhands/gun/pistol_lefthand_1.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/gun/pistol_righthand_1.dmi',
-	)
-	worn_icon_state = "t500"
-	caliber =  CALIBER_500 //codex
-	max_chamber_items = 5 //codex
-	default_ammo_type = /obj/item/ammo_magazine/revolver/t500
-	allowed_ammo_types = list(
-		/obj/item/ammo_magazine/revolver/t500,
-		/obj/item/ammo_magazine/revolver/t500/slavs,
-	)
-	force = 20
-	actions_types = null
-	attachable_allowed = list(
-		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/stock/t500,
-		/obj/item/attachable/t500_barrel/short,
-		/obj/item/attachable/t500_barrel,
-		/obj/item/attachable/flashlight/under,
-		/obj/item/attachable/lace/t500,
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/flashlight/under,
-		/obj/item/attachable/lasersight,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/scope,
-		/obj/item/attachable/scope/marine,
-		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/motiondetector,
-		/obj/item/attachable/buildasentry,
-		/obj/item/attachable/shoulder_mount,
-	)
-	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 10, "rail_y" = 20, "under_x" = 19, "under_y" = 13, "stock_x" = -19, "stock_y" = 0)
-	windup_delay = 0.8 SECONDS
-	windup_sound = 'sound/weapons/guns/fire/t500_start.ogg'
-	fire_sound = 'sound/weapons/guns/fire/t500.ogg'
-	dry_fire_sound = 'sound/weapons/guns/fire/t500_empty.ogg'
-	fire_animation = "t500_fire"
-	fire_delay = 0.8 SECONDS
-	akimbo_additional_delay = 0.6
-	accuracy_mult_unwielded = 0.9
-	accuracy_mult = 1
-	scatter_unwielded = 5
-	scatter = -1
-	recoil = 2
-	recoil_unwielded = 3
-
-//////////////////////////////////////////////////////////////////////////
 /////////////////////////// t312 revolver ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
@@ -587,7 +528,7 @@
 	force = 20
 	actions_types = null
 	attachable_allowed = list(
-		/obj/item/attachable/lace/t500,
+		/obj/item/attachable/lace,
 	)
 	attachable_offset = list("stock_x" = -19, "stock_y" = 0)
 	fire_sound = 'sound/weapons/guns/fire/t312.ogg'

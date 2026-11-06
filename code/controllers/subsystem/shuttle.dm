@@ -237,12 +237,18 @@ SUBSYSTEM_DEF(shuttle)
 		if(WEST)
 			transit_path = /turf/open/space/transit/west
 
-	var/datum/turf_reservation/proposal = SSmapping.request_turf_block_reservation(transit_width, transit_height, null, reservation_type = /datum/turf_reservation/transit, turf_type_override = transit_path)
+	var/datum/turf_reservation/proposal = SSmapping.request_turf_block_reservation(
+		transit_width,
+		transit_height,
+		z_size = 1, //if this is changed the turf uncontain code below has to be updated to support multiple zs
+		reservation_type = /datum/turf_reservation/transit,
+		turf_type_override = transit_path,
+	)
 
 	if(!istype(proposal))
 		return FALSE
 
-	var/turf/bottomleft = locate(proposal.bottom_left_turfs[1], proposal.bottom_left_turfs[2], proposal.bottom_left_turfs[3])
+	var/turf/bottomleft = proposal.bottom_left_turfs[1]
 	// Then create a transit docking port in the middle
 	var/coords = M.return_coords(0, 0, dock_dir)
 	/*	0------2
@@ -266,15 +272,24 @@ SUBSYSTEM_DEF(shuttle)
 
 	var/turf/midpoint = locate(transit_x, transit_y, bottomleft.z)
 	if(!midpoint)
+		qdel(proposal)
 		return FALSE
-	var/area/shuttle/transit/A = new()
-	A.parallax_movedir = travel_dir
-	A.contents = proposal.reserved_turfs
+
+	var/area/old_area = midpoint.loc
+	LISTASSERTLEN(old_area.turfs_to_uncontain_by_zlevel, bottomleft.z, list())
+	old_area.turfs_to_uncontain_by_zlevel[bottomleft.z] += proposal.reserved_turfs
+
+	var/area/shuttle/transit/new_area = new()
+	new_area.parallax_movedir = travel_dir
+	new_area.contents = proposal.reserved_turfs
+	LISTASSERTLEN(new_area.turfs_by_zlevel, bottomleft.z, list())
+	new_area.turfs_by_zlevel[bottomleft.z] = proposal.reserved_turfs
+
 	var/obj/docking_port/stationary/transit/new_transit_dock = new(midpoint)
 	new_transit_dock.reserved_area = proposal
 	new_transit_dock.name = "Transit for [M.shuttle_id]/[M.name]"
 	new_transit_dock.owner = M
-	new_transit_dock.assigned_area = A
+	new_transit_dock.assigned_area = new_area
 
 	// Add 180, because ports point inwards, rather than outwards
 	new_transit_dock.setDir(angle2dir(dock_angle))
@@ -490,10 +505,10 @@ SUBSYSTEM_DEF(shuttle)
 	)
 	if(!preview_reservation)
 		CRASH("failed to reserve an area for shuttle template loading")
-	var/turf/bottom_left  = TURF_FROM_COORDS_LIST(preview_reservation.bottom_left_turfs)
-	loading_template.load(bottom_left , centered = FALSE, register = FALSE)
+	var/turf/bottom_left  = preview_reservation.bottom_left_turfs[1]
+	loading_template.load(bottom_left, centered = FALSE, register = FALSE)
 
-	var/affected = loading_template.get_affected_turfs(bottom_left , centered=FALSE)
+	var/affected = loading_template.get_affected_turfs(bottom_left, centered = FALSE)
 
 	var/found = 0
 	// Search the turfs for docking ports
@@ -553,24 +568,25 @@ SUBSYSTEM_DEF(shuttle)
 	for(var/shuttle_id in SSmapping.shuttle_templates)
 		var/datum/map_template/shuttle/S = SSmapping.shuttle_templates[shuttle_id]
 
-		if(!templates[S.shuttle_id])
-			data["templates_tabs"] += S.shuttle_id
-			templates[S.shuttle_id] = list(
-				"shuttle_id" = S.port_id,
+		if(!templates[S.port_id])
+			data["templates_tabs"] += S.port_id
+			templates[S.port_id] = list(
+				"port_id" = S.port_id,
 				"templates" = list())
 
 		var/list/L = list()
 		L["name"] = S.name
 		L["shuttle_id"] = S.shuttle_id
+		L["port_id"] = S.port_id
 		L["description"] = S.description
 		L["admin_notes"] = S.admin_notes
 
 		if(selected == S)
 			data["selected"] = L
 
-		templates[S.shuttle_id]["templates"] += list(L)
+		templates[S.port_id]["templates"] += list(L)
 
-	data["templates_tabs"] = sortList(data["templates_tabs"])
+	data["templates_tabs"] = sort_list(data["templates_tabs"])
 
 	data["existing_shuttle"] = null
 
@@ -595,13 +611,6 @@ SUBSYSTEM_DEF(shuttle)
 		L["status"] = M.getDbgStatusText()
 		if(M == existing_shuttle)
 			data["existing_shuttle"] = L
-
-
-		if(istype(M, /obj/docking_port/mobile/marine_dropship))
-			var/obj/docking_port/mobile/marine_dropship/D = M
-			L["hijack"] = D.hijack_state
-		else
-			L["hijack"] = "N/A"
 
 		data["shuttles"] += list(L)
 

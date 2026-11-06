@@ -336,8 +336,8 @@
 	new /obj/item/weapon/sword/katana(src)
 
 /obj/item/storage/holster/blade/officer
-	name = "\improper officer sword scabbard"
-	desc = "A large leather scabbard used to carry a sword. Appears to be a reproduction, rather than original. It can be strapped to the waist or armor."
+	name = "\improper officer's sword scabbard"
+	desc = "A large leather scabbard used to carry a sword. Appears to be a reproduction, rather than an original. It can be strapped to the waist or to armor."
 	icon_state = "officer_sheath"
 	equip_slot_flags = ITEM_SLOT_BELT
 	worn_layer = CAPE_LAYER
@@ -481,6 +481,22 @@
 
 /obj/item/storage/holster/mp19/full/PopulateContents()
 	new /obj/item/weapon/gun/smg/mp19(src)
+
+/obj/item/storage/holster/ar18
+	name = "\improper M276 pattern Ar18 holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the TGMC. It consists of a modular belt with various clips. This version is designed for the Ar18, and features a larger frame to support the gun. Due to its unorthodox design, it isn't a very common sight, and is only specially issued."
+	icon_state = "ar18_holster"
+	equip_slot_flags = ITEM_SLOT_BELT
+	holsterable_allowed = list(
+		/obj/item/weapon/gun/rifle/ar18,
+	)
+
+	storage_type = /datum/storage/holster/ar18
+
+/obj/item/storage/holster/ar18/full/PopulateContents()
+	new /obj/item/weapon/gun/rifle/ar18(src)
+	new /obj/item/ammo_magazine/rifle/ar18(src)
+	new /obj/item/ammo_magazine/rifle/ar18(src)
 
 /obj/item/storage/holster/flarepouch
 	name = "flare pouch"
@@ -683,7 +699,7 @@
 	name = "\improper BM500 pattern BF revolver holster rig"
 	desc = "The BM500 is the special modular belt for BMSS revolvers."
 	icon_state = "t500_holster"
-	storage_type = /datum/storage/holster/belt/t500
+	storage_type = /datum/storage/holster/belt/t312
 
 /obj/item/storage/holster/belt/revolver/m44
 	name = "\improper M276 pattern M44 holster rig"

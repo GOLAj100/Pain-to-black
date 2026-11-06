@@ -672,72 +672,77 @@
 	starting_attachment_types = list(/obj/item/attachable/stock/icc_pdw, /obj/item/attachable/magnetic_harness, /obj/item/attachable/verticalgrip, /obj/item/attachable/extended_barrel)
 
 ///////////////////////////////////////////////////////////////////////
-////////////// Vector, based on KRISS Vector 45ACP. ///////////////////
+////////////// Vector, based on KRISS Vector 9mm. ///////////////////
 ///////////////////////////////////////////////////////////////////////
 
 /obj/item/weapon/gun/smg/vector
 	name = "\improper Vector storm submachinegun"
 	desc = "The Vector is the TerraGov Marine Corps depelopment to increase assault capability of marines. Lightweight and simple to use. It features delayed blowback system, heavily reducing recoil even with its high ROF. A highly-customizable platform, it is reliable and versatile. Ideal weapon for quick assaults. Uses extended .45 ACP HP magazines"
-	fire_sound = 'sound/weapons/guns/fire/tp23.ogg'
+	fire_sound = 'sound/weapons/guns/fire/vector_fire.ogg'
 	icon = 'icons/obj/items/gun/submachinegun64.dmi'
-	icon_state = "v45"
-	worn_icon_state = "v45"
+	icon_state = "v44"
+	worn_icon_state = "v44"
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/gun/submachinegun_lefthand_1.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/gun/submachinegun_righthand_1.dmi',
 		slot_back_str = 'icons/mob/clothing/back.dmi',
 	)
-	caliber = CALIBER_45ACP //codex
-	max_shells = 25 //codex
+	caliber = CALIBER_9X19 //codex
+	max_shells = 75 //codex
 	equip_slot_flags = ITEM_SLOT_BACK
 	force = 20
 	type_of_casings = null
 	default_ammo_type = /obj/item/ammo_magazine/smg/vector
 	allowed_ammo_types = list(
 		/obj/item/ammo_magazine/smg/vector,
+		/obj/item/ammo_magazine/smg/vector/ap,
 		/obj/item/ammo_magazine/smg/vector/incendiary,
-
+		/obj/item/ammo_magazine/smg/vector/hp,
 	)
 	attachable_allowed = list(
+		/obj/item/attachable/foldable/stock_l,
+		/obj/item/attachable/stock/stock_m,
+		/obj/item/attachable/stock/stock_mh,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/b7_scope,
+		/obj/item/attachable/scope/b12_scope,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/flashlight/under,
-		/obj/item/attachable/bayonet,
-		/obj/item/attachable/bayonetknife,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/motiondetector,
 		/obj/item/attachable/buildasentry,
 		/obj/item/attachable/shoulder_mount,
 		/obj/item/weapon/gun/pistol/plasma_pistol,
-		/obj/item/weapon/gun/shotgun/combat/masterkey,
-		/obj/item/weapon/gun/flamer/mini_flamer,
-		/obj/item/weapon/gun/grenade_launcher/underslung,
 		/obj/item/weapon/gun/energy/lasgun/lasrifle/pocket_beam,
 	)
 
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16, "rail_x" = 22, "rail_y" = 19, "under_x" = 26, "under_y" = 14, "stock_x" = 24, "stock_y" = 10)
+	starting_attachment_types = list(/obj/item/attachable/foldable/stock_l)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 21, "rail_x" = 7, "rail_y" = 23, "under_x" = 22, "under_y" = 17, "stock_x" = 0, "stock_y" = 16)
 
-	fire_delay = 0.1 SECONDS
+	fire_delay = 0.15 SECONDS
 	damage_mult = 1
 	recoil = -5  // Recoil blowback system
 	recoil_unwielded = -2
 	wield_delay = 0.5 SECONDS
 
 	akimbo_additional_delay = 0.5
+	burst_amount = 5
 	aim_fire_delay = 0.1 SECONDS
 	aim_speed_modifier = 0 //no slowdown
 	aim_slowdown = 0
 
-	accuracy_mult = 1
+	accuracy_mult = 1.45
 	accuracy_mult_unwielded = 0.75 //moving or akimbo yield lower acc
-	scatter = -2
+	scatter = 2
 	scatter_unwielded = 6 // Not exactly small weapon, and recoil blowback is only for vertical recoil
 
 	movement_acc_penalty_mult = 0.1
@@ -756,7 +761,7 @@
 	icon_state = "c17"
 	worn_icon_state = "c17"
 	caliber = CALIBER_45ACP //codex
-	max_shells = 55 //codex
+	max_shells = 65 //codex
 	fire_sound = 'sound/weapons/guns/fire/smg_light.ogg'
 	unload_sound = 'sound/weapons/guns/interact/m16_unload.ogg'
 	reload_sound = 'sound/weapons/guns/interact/m16_reload.ogg'

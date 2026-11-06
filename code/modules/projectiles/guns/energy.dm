@@ -469,6 +469,7 @@
 		"Overcharge" = /datum/lasrifle/energy_rifle_mode/overcharge,
 		"Weakening" = /datum/lasrifle/energy_rifle_mode/weakening,
 		"Microwave" = /datum/lasrifle/energy_rifle_mode/microwave,
+		"Melting" = /datum/lasrifle/energy_rifle_mode/melting,
 	)
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_rifle/rifleman
@@ -487,6 +488,16 @@
 	icon_state = "ter"
 	description = "Fire a standard automatic laser pulse. Better armour penetration and sunder than common projectiles."
 
+/datum/lasrifle/energy_rifle_mode/melting
+	rounds_per_shot = 18
+	ammo_datum_type = /datum/ammo/energy/lasgun/marine/autolaser/melting
+	fire_delay = 0.3 SECONDS
+	fire_sound = 'sound/weapons/guns/fire/laser_rifle_2.ogg'
+	message_to_user = "You set the rifle's laser's charge mode to melting."
+	fire_mode = GUN_FIREMODE_AUTOMATIC
+	icon_state = "ter"
+	radial_icon_state = "laser_heat"
+	description = "Fires an unusual laser pulse that applies a melting effect which severely sunders xenomorph armor over time, as well as applying further damage."
 
 /datum/lasrifle/energy_rifle_mode/overcharge
 	rounds_per_shot = 24
@@ -849,8 +860,9 @@
 	description = "Fires a devestating laser pulse that significantly degrades the victims armor, at the cost of lower direct damage."
 
 /datum/lasrifle/energy_sniper_mode/ricochet
-	rounds_per_shot = 45
-	fire_delay = 0.8 SECONDS
+	rounds_per_shot = 145
+	fire_delay = 3 SECONDS
+	windup_delay = 1.5 SECONDS
 	ammo_datum_type = /datum/ammo/energy/lasgun/marine/ricochet/four
 	fire_sound = 'sound/weapons/guns/fire/laser3.ogg'
 	message_to_user = "You set the sniper rifle's charge mode to ricochet."
@@ -927,7 +939,7 @@
 		"Melting" = /datum/lasrifle/energy_mg_mode/standard/melting,
 	)
 
-/obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_mlaser/apply_gun_modifiers(obj/projectile/projectile_to_fire, atom/target, firer)
+/obj/item/weapon/gun/energy/lasgun/lasrifle/standard_marine_mlaser/apply_gun_modifiers(atom/movable/projectile/projectile_to_fire, atom/target, firer)
 	. = ..()
 	if((gun_firemode == GUN_FIREMODE_BURSTFIRE) && shots_fired) //this specifically boosts the burst fire mode
 		projectile_to_fire.damage *= (1 + shots_fired)
@@ -1102,8 +1114,9 @@
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/apply_custom(mutable_appearance/standing, inhands, icon_used, state_used)
 	. = ..()
-	var/mutable_appearance/emissive_overlay = emissive_appearance(icon_used, "[worn_icon_state]_emissive")
-	standing.overlays.Add(emissive_overlay)
+	if(rounds)
+		var/mutable_appearance/emissive_overlay = emissive_appearance(icon_used, "[worn_icon_state]_emissive", src)
+		standing.overlays.Add(emissive_overlay)
 
 /obj/item/weapon/gun/energy/lasgun/lasrifle/volkite/serpenta
 	name = "\improper VX-12 Serpenta"

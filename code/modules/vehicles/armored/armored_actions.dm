@@ -148,7 +148,7 @@
 		return
 
 	chassis.visible_message("[chassis] honks its horn!")
-	playsound(chassis, 'sound/vehicles/horns/armored_horn.ogg', 70)
+	playsound(chassis.loc, 'sound/vehicles/horns/armored_horn.ogg', 70)
 	TIMER_COOLDOWN_START(chassis, COOLDOWN_ARMORED_HORN, 15 SECONDS) //To keep people's eardrums intact
 
 /datum/action/vehicle/sealed/armored/strafe
@@ -181,8 +181,7 @@
 
 /datum/action/vehicle/sealed/armored/smoke_screen/New(Target)
 	. = ..()
-
-	visual_references[VREF_MUTABLE_AMMO_COUNTER] = mutable_appearance(null, null, ACTION_LAYER_MAPTEXT, FLOAT_PLANE)
+	visual_references[VREF_MUTABLE_AMMO_COUNTER] = mutable_appearance(null, null, ACTION_LAYER_MAPTEXT)
 
 /datum/action/vehicle/sealed/armored/smoke_screen/action_activate(trigger_flags)
 	if(!owner || !chassis || !(owner in chassis.occupants))
@@ -190,12 +189,12 @@
 	if(TIMER_COOLDOWN_CHECK(chassis, COOLDOWN_ARMORED_SMOKE))
 		return
 	if(!shots_remaining)
-		playsound(chassis, 'sound/weapons/guns/interact/m92_cocked.ogg', 40, TRUE)
+		playsound(chassis.loc, 'sound/weapons/guns/interact/m92_cocked.ogg', 40, TRUE)
 		return
 
 	shots_remaining --
 	chassis.visible_message("[chassis] pops smoke!")
-	playsound(chassis, 'sound/weapons/guns/fire/grenadelauncher.ogg', 80, TRUE)
+	playsound(chassis.loc, 'sound/weapons/guns/fire/grenadelauncher.ogg', 80, TRUE)
 	TIMER_COOLDOWN_START(chassis, COOLDOWN_ARMORED_SMOKE, 2 SECONDS)
 
 	var/list/source_turfs = list()
@@ -206,7 +205,7 @@
 	var/datum/ammo/ammo_type = /datum/ammo/bullet/micro_rail/smoke_burst/tank
 	for(var/turf/source_turf in source_turfs)
 		var/turf/target_turf = get_ranged_target_turf(source_turf, get_dir(chassis, source_turf), 5)
-		var/obj/projectile/projectile_to_fire = new /obj/projectile(source_turf)
+		var/atom/movable/projectile/projectile_to_fire = new /atom/movable/projectile(source_turf)
 		projectile_to_fire.generate_bullet(GLOB.ammo_list[ammo_type])
 		if(chassis.hitbox?.tank_desants)
 			projectile_to_fire.hit_atoms += chassis.hitbox.tank_desants

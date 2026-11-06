@@ -5,6 +5,7 @@ GLOBAL_LIST_INIT(robot_clothes_listed_products, list(
 	/obj/effect/vendor_bundle/robot/heavy_armor = list(CAT_AMR, "Combat robot heavy armor kit", 0, "black"),
 	/obj/item/storage/backpack/marine/satchel = list(CAT_BAK, "Satchel", 0, "orange"),
 	/obj/item/storage/backpack/marine/standard = list(CAT_BAK, "Backpack", 0, "black"),
+	/obj/item/cell/lasgun/volkite/powerpack/marine_back = list(CAT_BAK, "Power pack", 0, "black"),
 	/obj/item/armor_module/storage/uniform/black_vest = list(CAT_WEB, "Tactical black vest", 0, "orange"),
 	/obj/item/armor_module/storage/uniform/webbing = list(CAT_WEB, "Tactical Webbing", 0, "black"),
 	/obj/item/armor_module/storage/uniform/holster = list(CAT_WEB, "Shoulder handgun holster", 0, "black"),

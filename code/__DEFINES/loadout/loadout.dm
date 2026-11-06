@@ -14,6 +14,7 @@
 #define CAT_MAS "MASKS"
 #define CAT_MOD "JAEGER STORAGE MODULES"
 #define CAT_ARMMOD "JAEGER ARMOR MODULES"
+#define CAT_LAS "LASER GUN"
 
 // Synth Special Categories
 #define CAT_SMR "SUITS AND ARMOR" // Synth's suits

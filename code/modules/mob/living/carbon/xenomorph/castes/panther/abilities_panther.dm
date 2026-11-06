@@ -292,7 +292,7 @@
 /datum/action/ability/xeno_action/evasive_maneuvers/proc/evasion_debuff_check(datum/source, amount)
 	SIGNAL_HANDLER
 
-	if(amount > 0 || !evade_active) //If evasion isn't active we don't care
+	if(amount <= 0 || !evade_active) //If evasion isn't active we don't care
 		return
 	to_chat(xeno_owner, span_userdanger("Our movements have been interrupted!"))
 	xeno_owner.use_plasma(65, TRUE)
@@ -351,7 +351,7 @@
 	return COMPONENT_PRE_THROW_IMPACT_HIT
 
 ///This is where the dodgy magic happens
-/datum/action/ability/xeno_action/evasive_maneuvers/proc/evasion_dodge(datum/source, obj/projectile/proj, cardinal_move, uncrossing)
+/datum/action/ability/xeno_action/evasive_maneuvers/proc/evasion_dodge(datum/source, atom/movable/projectile/proj, cardinal_move, uncrossing)
 	SIGNAL_HANDLER
 
 	if(!evade_active) //If evasion is not active we don't dodge

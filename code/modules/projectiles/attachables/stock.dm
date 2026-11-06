@@ -146,9 +146,29 @@
 	size_mod = 1
 	attach_features_flags = ATTACH_REMOVABLE
 	wield_delay_mod = 0.2 SECONDS
+	damage_mod = 0.35
 	accuracy_mod = 0.15
 	recoil_mod = -2
 	scatter_mod = -2
+
+/obj/item/attachable/stock/p14stock
+	name = "\improper P-14 stock"
+	desc = "A specialized stock for the P-14."
+	icon_state = "stock_p14"
+	pixel_shift_x = 32
+	pixel_shift_y = 13
+	size_mod = 2
+	attach_features_flags = ATTACH_REMOVABLE
+	delay_mod = 4
+	burst_accuracy_mod = 0.1
+	damage_mod = -0.3
+	movement_acc_penalty_mod = 2
+	wield_delay_mod = 0.2 SECONDS
+	accuracy_mod = 0.25
+	burst_mod = 2
+	scatter_mod = 0.1
+	scatter_decay_mod = 0.2
+	scatter_unwielded_mod = 0.5
 
 /obj/item/attachable/stock/t60stock
 	name = "MG-60 stock"
@@ -186,26 +206,50 @@
 	pixel_shift_x = 0
 	pixel_shift_y = 0
 
-/obj/item/attachable/stock/ar18stock
-	name = "\improper AR-18 stock"
-	desc = "A specialized stock for the AR-18."
-	icon_state = "t18stock"
-	pixel_shift_x = 32
-	pixel_shift_y = 13
-
-/obj/item/attachable/stock/ar12stock
-	name = "\improper AR-12 stock"
-	desc = "A specialized stock for the AR-12."
+/obj/item/attachable/stock/stock_m
+	name = "\improper medium stock"
+	desc = "A universal stock for the AR-12."
 	icon_state = "t12stock"
+	attach_features_flags = ATTACH_REMOVABLE
+	accuracy_mod = 0.3
+	scatter_mod = -5
+	size_mod = 5
+	recoil_mod = -2
+	wield_delay_mod = 0.4 SECONDS
+	movement_acc_penalty_mod = 2
 	pixel_shift_x = 32
 	pixel_shift_y = 13
 
-/obj/item/attachable/stock/t42stock
-	name = "\improper MG-42 stock"
-	desc = "A specialized stock for the MG-42."
+/obj/item/attachable/stock/stock_h
+	name = "\improper heavy stock"
+	desc = "A universal stock for the MG-42."
 	icon_state = "t42stock"
+	attach_features_flags = ATTACH_REMOVABLE
+	aim_speed_mod = 0.4
+	accuracy_mod = 0.6
+	scatter_mod = -8
+	size_mod = 5
+	recoil_mod = -3
+	movement_acc_penalty_mod = -2
+	aim_mode_delay_mod = -0.5
+	scatter_unwielded_mod = 60
+	wield_delay_mod = 0.2 SECONDS
+	movement_acc_penalty_mod = 3
 	pixel_shift_x = 32
 	pixel_shift_y = 13
+
+/obj/item/attachable/stock/stock_mh
+	name = "\improper medium-heavy stock"
+	desc = "A universal stock for the AR-21."
+	icon_state = "t21stock"
+	attach_features_flags = ATTACH_REMOVABLE
+	accuracy_mod = 0.4
+	scatter_mod = -6
+	size_mod = 5
+	recoil_mod = -2
+	aim_speed_mod = 0.2
+	wield_delay_mod = 0.1 SECONDS
+	movement_acc_penalty_mod = 2.5
 
 /obj/item/attachable/stock/br64stock
 	name = "\improper BR-64 stock"

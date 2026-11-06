@@ -1,16 +1,41 @@
 
 //-------------------------------------------------------
-//M4A3 PISTOL
+//M4A3-P14 PISTOL
 
 /obj/item/ammo_magazine/pistol/p14
-	name = "\improper P-14 magazine (9mm)"
+	name = "\improper P-14 fmj magazine (9mm)"
 	desc = "A pistol magazine."
 	caliber = CALIBER_9X19
 	icon_state = "tp14"
 	icon_state_mini = "mag_pistol"
-	max_rounds = 21
+	max_rounds = 20
+	ammo_band_icon = "tp14_band"
+	ammo_band_color = null
 	w_class = WEIGHT_CLASS_SMALL
 	default_ammo = /datum/ammo/bullet/pistol
+
+/obj/item/ammo_magazine/pistol/p14/ap
+	name = "\improper P-14 ap magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/pistol/p14/hp
+	name = "\improper P-14 hollowpoint magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/hp
+	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
+
+/obj/item/ammo_magazine/pistol/p14/incendiary
+	name = "\improper P-14 incendiary magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/incendiary
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
+
+/obj/item/ammo_magazine/pistol/p14/ext
+	name = "\improper P-14 extended magazine (9mm)"
+	max_rounds = 34
+	icon_state = "tp14_ext"
+	bonus_overlay = "tp14_ext"
+	icon_state_mini = "mag_pistol_yellow"
+	ammo_band_color = AMMO_BAND_COLOR_EXTENDED
 
 //-------------------------------------------------------
 //PP-7 Plasma Pistol
@@ -194,6 +219,11 @@
 	name = "\improper 88M4 incendiary magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
+
+/obj/item/ammo_magazine/pistol/vp70/fmj
+	name = "\improper 88M4 magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol
+	ammo_band_color = null
 
 //-------------------------------------------------------
 //VP78

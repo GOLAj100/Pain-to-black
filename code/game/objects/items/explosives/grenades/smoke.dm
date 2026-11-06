@@ -7,8 +7,7 @@
 	hud_state = "grenade_smoke"
 	dangerous = FALSE
 	icon_state_mini = "grenade_blue"
-	arm_sound = 'sound/weapons/grenade/grenade_pinout4.ogg'
-	overlay_type = "white"
+	overlay_type = "blue"
 	/// smoke type created when the grenade is primed
 	var/datum/effect_system/smoke_spread/smoketype = /datum/effect_system/smoke_spread/bad
 	///radius this smoke grenade will encompass
@@ -67,6 +66,7 @@
 	dangerous = TRUE
 	smoketype = /datum/effect_system/smoke_spread/satrapine
 	smokeradius = 6
+	overlay_type = "red"
 
 /obj/item/explosive/grenade/smokebomb/satrapine/activate(mob/user)
 	. = ..()
@@ -113,6 +113,7 @@
 	icon_state_mini = "grenade_antigas"
 	dangerous = TRUE
 	smoketype = /datum/effect_system/smoke_spread/antigas
+	overlay_type = "white"
 
 /obj/item/explosive/grenade/smokebomb/drain/agls
 	name = "\improper AGLS-T smoke grenade"
@@ -120,4 +121,11 @@
 	icon_state = "agls_pgas"
 	det_time = 1 SECONDS
 	smokeradius = 2
-	overlay_type = "purple"
+
+/obj/item/explosive/grenade/smokebomb/drain/pellet
+	name = "tanglefoot emitting system pellet"
+	desc = "A small pellet dropped from the sky. Emits tanglefoot on a landing position."
+	icon_state = "pellet_pgas"
+	det_time = 2 SECONDS
+	smokeradius = 10
+	smoke_duration = 15

@@ -5,18 +5,20 @@
 	ammo_behavior_flags = AMMO_BALLISTIC
 	accuracy_var_low = 7
 	accuracy_var_high = 7
-	damage = 17
+	damage = 25
 	accurate_range = 4
 	damage_falloff = 1
 	additional_xeno_penetration = 10
 	penetration = 5
+	matter_cost = 2
 
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
 	hud_state = "smg_ap"
-	damage = 15
+	damage = 20
 	penetration = 30
 	additional_xeno_penetration = 20
+	matter_cost = 0
 
 /datum/ammo/bullet/smg/acp
 	name = "submachinegun ACP bullet"
@@ -27,9 +29,24 @@
 	accuracy_var_high = 7
 	damage = 20
 	accurate_range = 4
-	penetration = 0
+	penetration = 5
 	additional_xeno_penetration = 10
 	shrapnel_chance = 25
+	matter_cost = 4
+
+/datum/ammo/bullet/smg/acp/hp
+	name = "submachinegun holowpoint ACP bullet"
+	hud_state = "smg"
+	hud_state_empty = "smg_empty"
+	ammo_behavior_flags = AMMO_BALLISTIC
+	accuracy_var_low = 7
+	accuracy_var_high = 7
+	damage = 37
+	accurate_range = 4
+	penetration = -15
+	additional_xeno_penetration = -15
+	shrapnel_chance = 25
+	matter_cost = 6
 
 /datum/ammo/bullet/smg/acp/incendiary
 	name = "incendiary submachinegun ACP bullet"
@@ -40,6 +57,7 @@
 	damage = 10
 	penetration = 0
 	additional_xeno_penetration = 0
+	matter_cost = 0
 
 /datum/ammo/bullet/smg/ap/hv
 	name = "high velocity armor-piercing submachinegun bullet"
@@ -60,6 +78,7 @@
 	ammo_behavior_flags = AMMO_BALLISTIC|AMMO_INCENDIARY
 	damage = 18
 	penetration = 0
+	matter_cost = 0
 
 /datum/ammo/bullet/smg/rad
 	name = "radioactive submachinegun bullet"
@@ -68,7 +87,7 @@
 	penetration = 15
 	sundering = 1
 
-/datum/ammo/bullet/smg/rad/on_hit_mob(mob/target_mob, obj/projectile/proj)
+/datum/ammo/bullet/smg/rad/on_hit_mob(mob/target_mob, atom/movable/projectile/proj)
 	if(!isliving(target_mob))
 		return
 	var/mob/living/living_victim = target_mob

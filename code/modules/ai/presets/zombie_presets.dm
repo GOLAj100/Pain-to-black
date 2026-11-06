@@ -9,7 +9,7 @@
 		AddComponent(/datum/component/ai_controller, ai_type, null)
 
 /mob/living/carbon/human/species/zombie/ai/stay
-	ai_type = /datum/ai_behavior/xeno/zombie/idle
+	ai_type = /datum/ai_behavior/xeno/zombie/patrolling
 
 /mob/living/carbon/human/species/zombie/ai/patrol
 	ai_type = /datum/ai_behavior/xeno/zombie/patrolling

@@ -32,6 +32,7 @@
 /obj/item/weapon/gun/rifle/ar18
 	name = "\improper AR-18 Kauser carbine"
 	desc = "The Keckler and Hoch AR-18 carbine is one of the standard rifles used by the TerraGov Marine Corps. It's commonly used by people who prefer greater mobility in combat, like scouts and other light infantry. Uses 10x24mm caseless ammunition."
+	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "t18"
 	worn_icon_state = "t18"
 	fire_sound = 'sound/weapons/guns/fire/tgmc/kinetic/gun_ar18.ogg'
@@ -47,11 +48,16 @@
 	allowed_ammo_types = list(
 		/obj/item/ammo_magazine/rifle/ar18,
 		/obj/item/ammo_magazine/rifle/ar18/ap,
+		/obj/item/ammo_magazine/rifle/ar18/incendiary,
 	)
 	attachable_allowed = list(
-		/obj/item/attachable/stock/ar18stock,
+		/obj/item/attachable/foldable/stock_l,
+		/obj/item/attachable/stock/stock_m,
+		/obj/item/attachable/stock/stock_mh,
+		/obj/item/attachable/stock/stock_h,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/b7_scope,
+		/obj/item/attachable/scope/b12_scope,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/lasersight,
@@ -80,43 +86,45 @@
 		/obj/item/weapon/gun/rifle/pepperball/pepperball_mini,
 		/obj/item/attachable/shoulder_mount,
 		/obj/item/weapon/gun/energy/lasgun/lasrifle/pocket_beam,
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES
 	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC, GUN_FIREMODE_BURSTFIRE, GUN_FIREMODE_AUTOBURST)
-	starting_attachment_types = list(/obj/item/attachable/stock/ar18stock)
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 16,"rail_x" = 5, "rail_y" = 19, "under_x" = 18, "under_y" = 14, "stock_x" = 0, "stock_y" = 13)
+	starting_attachment_types = list(/obj/item/attachable/foldable/stock_l)
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 17, "rail_x" = 5, "rail_y" = 20, "under_x" = 24, "under_y" = 14, "stock_x" = 0, "stock_y" = 13)
 	aim_fire_delay = 0.1 SECONDS
 	aim_speed_modifier = 2
 
 	fire_delay = 0.2 SECONDS
 	burst_delay = 0.1 SECONDS
 	extra_delay = 0.1 SECONDS
-	accuracy_mult = 1.05
-	scatter = 0
+	accuracy_mult = 1.50
+	scatter = 3
+	w_class = 4
+	recoil = 1
 	burst_amount = 4
-	aim_slowdown = 0.30
+	aim_slowdown = 0.20
 	damage_falloff_mult = 0.9
-	movement_acc_penalty_mult = 4
+	movement_acc_penalty_mult = 3
 
 /obj/item/weapon/gun/rifle/ar18/pointman
-	starting_attachment_types = list(/obj/item/attachable/stock/ar18stock, /obj/item/attachable/lasersight, /obj/item/attachable/flashlight)
+	starting_attachment_types = list(/obj/item/attachable/stock/stock_m, /obj/item/attachable/lasersight, /obj/item/attachable/flashlight)
 
 /obj/item/weapon/gun/rifle/ar18/standard
-	starting_attachment_types = list(/obj/item/attachable/stock/ar18stock, /obj/item/weapon/gun/grenade_launcher/underslung, /obj/item/attachable/reddot, /obj/item/attachable/extended_barrel)
+	starting_attachment_types = list(/obj/item/attachable/foldable/stock_l, /obj/item/weapon/gun/grenade_launcher/underslung, /obj/item/attachable/reddot, /obj/item/attachable/extended_barrel)
 
 /obj/item/weapon/gun/rifle/ar18/scout
-	starting_attachment_types = list(/obj/item/attachable/stock/ar18stock, /obj/item/weapon/gun/grenade_launcher/underslung, /obj/item/attachable/motiondetector, /obj/item/attachable/extended_barrel)
+	starting_attachment_types = list(/obj/item/weapon/gun/grenade_launcher/underslung, /obj/item/attachable/motiondetector, /obj/item/attachable/compensator)
 
 /obj/item/weapon/gun/rifle/ar18/engineer
-	starting_attachment_types = list(/obj/item/attachable/stock/ar18stock, /obj/item/attachable/magnetic_harness, /obj/item/attachable/lasersight)
+	starting_attachment_types = list(/obj/item/attachable/foldable/stock_l, /obj/item/attachable/magnetic_harness, /obj/item/attachable/lasersight)
 
 /obj/item/weapon/gun/rifle/ar18/plasma_pistol
-	starting_attachment_types = list(/obj/item/attachable/stock/ar18stock, /obj/item/weapon/gun/pistol/plasma_pistol, /obj/item/attachable/motiondetector, /obj/item/attachable/compensator)
+	starting_attachment_types = list(/obj/item/attachable/foldable/stock_l, /obj/item/weapon/gun/pistol/plasma_pistol, /obj/item/attachable/motiondetector, /obj/item/attachable/compensator)
 
 /obj/item/weapon/gun/rifle/ar18/beginner
-	starting_attachment_types = list(/obj/item/attachable/stock/ar18stock, /obj/item/attachable/magnetic_harness, /obj/item/attachable/angledgrip, /obj/item/attachable/compensator)
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/angledgrip, /obj/item/attachable/compensator)
 
 //-------------------------------------------------------
 //AR-12 Assault Rifle
@@ -124,6 +132,7 @@
 /obj/item/weapon/gun/rifle/ar12
 	name = "\improper AR-12 K&H assault rifle"
 	desc = "The Keckler and Hoch AR-12 assault rifle used to be the TerraGov Marine Corps standard issue rifle before the AR-18 carbine replaced it. It is, however, still used widely despite that. The gun itself is very good at being used in most situations however it suffers in engagements at close quarters and is relatively hard to shoulder than some others. It uses 10x24mm caseless ammunition."
+	icon = 'icons/obj/items/gun/rifle64.dmi'
 	icon_state = "t12"
 	worn_icon_state = "t12"
 	fire_sound = SFX_GUN_AR12
@@ -132,17 +141,22 @@
 	reload_sound =   'sound/weapons/guns/rifles/AR-12/AR12_clipin.ogg'
 	cocked_sound =   'sound/weapons/guns/rifles/AR-12/AR12_boltpull.ogg'
 	caliber = CALIBER_10X24_CASELESS //codex
-	max_shells = 50 //codex
+	max_shells = 40 //codex
 	force = 20
 	default_ammo_type = /obj/item/ammo_magazine/rifle/ar12
 	allowed_ammo_types = list(
 		/obj/item/ammo_magazine/rifle/ar12,
+		/obj/item/ammo_magazine/rifle/ar12/extended,
 		/obj/item/ammo_magazine/rifle/ar12/incendiary,
 	)
 	attachable_allowed = list(
-		/obj/item/attachable/stock/ar12stock,
+		/obj/item/attachable/foldable/stock_l,
+		/obj/item/attachable/stock/stock_m,
+		/obj/item/attachable/stock/stock_mh,
+		/obj/item/attachable/stock/stock_h,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/b7_scope,
+		/obj/item/attachable/scope/b12_scope,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/gyro,
@@ -171,37 +185,40 @@
 		/obj/item/weapon/gun/rifle/pepperball/pepperball_mini,
 		/obj/item/attachable/shoulder_mount,
 		/obj/item/weapon/gun/energy/lasgun/lasrifle/pocket_beam,
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES
 	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC, GUN_FIREMODE_BURSTFIRE, GUN_FIREMODE_AUTOBURST)
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 17,"rail_x" = 0, "rail_y" = 23, "under_x" = 17, "under_y" = 13, "stock_x" = 0, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 36, "muzzle_y" = 17,"rail_x" = 4, "rail_y" = 24, "under_x" = 23, "under_y" = 13, "stock_x" = 0, "stock_y" = 13)
 	aim_fire_delay = 0.1 SECONDS
 	aim_speed_modifier = 2
 
-	starting_attachment_types = list(/obj/item/attachable/stock/ar12stock)
+	starting_attachment_types = list(/obj/item/attachable/stock/stock_m)
 
 	fire_delay = 0.2 SECONDS
 	burst_delay = 0.15 SECONDS
 	extra_delay = 0.05 SECONDS
-	accuracy_mult = 1.1
-	scatter = -2
-	wield_delay = 0.9 SECONDS
+	accuracy_mult = 0.8
+	scatter = 3
+	w_class = 5
+	wield_delay = 1.55 SECONDS
+	recoil = 1
 	burst_amount = 3
-	aim_slowdown = 0.4
-	damage_falloff_mult = 0.5
+	aim_slowdown = 0.6
+	movement_acc_penalty_mult = 3
+	damage_mult = 1.05 //Has smaller magazines
 
 	placed_overlay_iconstate = "t12"
 
 /obj/item/weapon/gun/rifle/ar12/rifleman
-	starting_attachment_types = list(/obj/item/attachable/stock/ar12stock, /obj/item/attachable/reddot, /obj/item/attachable/extended_barrel, /obj/item/weapon/gun/grenade_launcher/underslung)
+	starting_attachment_types = list(/obj/item/attachable/stock/stock_m, /obj/item/attachable/reddot, /obj/item/attachable/extended_barrel, /obj/item/weapon/gun/grenade_launcher/underslung)
 
 /obj/item/weapon/gun/rifle/ar12/engineer
-	starting_attachment_types = list(/obj/item/attachable/stock/ar12stock, /obj/item/attachable/magnetic_harness, /obj/item/attachable/extended_barrel, /obj/item/weapon/gun/flamer/mini_flamer)
+	starting_attachment_types = list(/obj/item/attachable/stock/stock_m, /obj/item/attachable/magnetic_harness, /obj/item/attachable/extended_barrel, /obj/item/weapon/gun/flamer/mini_flamer)
 
 /obj/item/weapon/gun/rifle/ar12/medic
-	starting_attachment_types = list(/obj/item/attachable/stock/ar12stock, /obj/item/attachable/magnetic_harness, /obj/item/attachable/extended_barrel, /obj/item/weapon/gun/grenade_launcher/underslung)
+	starting_attachment_types = list(/obj/item/attachable/stock/stock_m, /obj/item/attachable/magnetic_harness, /obj/item/attachable/extended_barrel, /obj/item/weapon/gun/grenade_launcher/underslung)
 
 //-------------------------------------------------------
 //DMR-37 DMR
@@ -234,12 +251,16 @@
 	wield_sound =    'sound/weapons/guns/dmr/Deploy_Wave_DMR.ogg'
 	caliber = CALIBER_10X27_CASELESS //codex
 	aim_slowdown = 0.75
-	wield_delay = 1 SECONDS
+	wield_delay = 0.6 SECONDS
 	force = 20
 	max_shells = 20 //codex
 	default_ammo_type = /obj/item/ammo_magazine/rifle/dmr37
-	allowed_ammo_types = list(/obj/item/ammo_magazine/rifle/dmr37)
+	allowed_ammo_types = list(/obj/item/ammo_magazine/rifle/dmr37, /obj/item/ammo_magazine/rifle/dmr37/f)
 	attachable_allowed = list(
+		/obj/item/attachable/foldable/stock_l,
+		/obj/item/attachable/stock/stock_m,
+		/obj/item/attachable/stock/stock_mh,
+		/obj/item/attachable/stock/stock_h,
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonetknife,
@@ -271,17 +292,19 @@
 
 	gun_features_flags = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_SMOKE_PARTICLES
 	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
-	starting_attachment_types = list(/obj/item/attachable/scope/mini/dmr)
-	attachable_offset = list("muzzle_x" = 50, "muzzle_y" = 20,"rail_x" = 21, "rail_y" = 22, "under_x" = 31, "under_y" = 15, "stock_x" = 14, "stock_y" = 10)
+	starting_attachment_types = list(/obj/item/attachable/stock/stock_mh, /obj/item/attachable/scope/mini/dmr)
+	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 20,"rail_x" = 7, "rail_y" = 22, "under_x" = 15, "under_y" = 15, "stock_x" = 1, "stock_y" = 14)
 	actions_types = list(/datum/action/item_action/aim_mode)
 	aim_fire_delay = 0.2 SECONDS
-	aim_speed_modifier = 2
+	aim_speed_modifier = 1.8
 
-	fire_delay = 0.65 SECONDS
-	accuracy_mult = 1.15
-	scatter = -4
+	fire_delay = 0.55 SECONDS
+	accuracy_mult = 0.9
+	w_class = 5
+	recoil = 1
+	scatter = 2
 	burst_amount = 1
-	movement_acc_penalty_mult = 6
+	movement_acc_penalty_mult = 3.5
 
 	var/bump_fire = FALSE
 
@@ -386,7 +409,7 @@
 		/obj/item/weapon/gun/rifle/pepperball/pepperball_mini,
 		/obj/item/attachable/shoulder_mount,
 		/obj/item/weapon/gun/energy/lasgun/lasrifle/pocket_beam, //RUTGMC EDIT
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 
 	gun_features_flags = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_SMOKE_PARTICLES
@@ -458,7 +481,7 @@
 		/obj/item/weapon/gun/rifle/pepperball/pepperball_mini,
 		/obj/item/attachable/shoulder_mount,
 		/obj/item/weapon/gun/energy/lasgun/lasrifle/pocket_beam, //RUTGMC EDIT
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES
@@ -583,49 +606,6 @@
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/weapon/gun/grenade_launcher/underslung/invisible,
 	)
-
-//-------------------------------------------------------
-//TypeSh12-Saiga12
-
-/obj/item/weapon/gun/rifle/saiga12
-	name = "Святогор"
-	desc = "Experimental automatic rifle Saiga-12 with typesh12 25 rounds and a new generation feeding system."
-	icon_state = "typesh12"
-	worn_icon_state = "typesh12"
-	icon = 'icons/obj/items/gun/rifle64.dmi'
-	max_shells = 25 //codex
-	fire_sound = 'sound/weapons/guns/fire/howitzer_fire.ogg'
-	unload_sound = 'sound/weapons/guns/interact/ak47_unload.ogg'
-	reload_sound = 'sound/weapons/guns/interact/ak47_reload.ogg'
-	cocked_sound = 'sound/weapons/guns/interact/ak47_cocked.ogg'
-	default_ammo_type = /obj/item/ammo_magazine/rifle/typesh12
-	allowed_ammo_types = list(
-		/obj/item/ammo_magazine/rifle/typesh12,
-		/obj/item/ammo_magazine/rifle/typesh12/slug,
-		/obj/item/ammo_magazine/rifle/typesh12/flechette,
-	)
-	attachable_allowed = list(
-		/obj/item/attachable/scope/marine,
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/scope,
-	)
-
-	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES|GUN_WIELDED_FIRING_ONLY
-	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
-	attachable_offset = list("muzzle_x" = 57, "muzzle_y" = 23,"rail_x" = 22, "rail_y" = 26, "under_x" = 23, "under_y" = 17, "stock_x" = 28, "stock_y" = 17)
-
-	fire_delay = 0.4 SECONDS
-	burst_delay = 0.35 SECONDS
-	accuracy_mult_unwielded = 0.9
-	scatter = 3
-	scatter_unwielded = -2
-	accuracy_mult = 1.15
-	aim_slowdown = 0.5
-	damage_falloff_mult = 8
-	recoil = 0.5
-	movement_acc_penalty_mult = 5
 
 //-------------------------------------------------------
 
@@ -799,13 +779,13 @@
 		/obj/item/attachable/shoulder_mount,
 		/obj/item/weapon/gun/energy/lasgun/lasrifle/pocket_beam,
 		/obj/item/attachable/b7_scope,
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES|GUN_WIELDED_FIRING_ONLY
 	gun_firemode_list = list(GUN_FIREMODE_SEMIAUTO, GUN_FIREMODE_AUTOMATIC)
 	attachable_offset = list("muzzle_x" = 35, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 5, "stock_y" = 12)
 	starting_attachment_types = list(/obj/item/attachable/stock/mpi_km)
-	damage_falloff_mult = 0.4
+	damage_falloff_mult = 0.5
 	force = 20
 	burst_amount = 2
 	autoburst_delay = 0.1 SECONDS
@@ -852,14 +832,12 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/scope/marine,
 		/obj/item/attachable/angledgrip,
-		/obj/item/weapon/gun/shotgun/combat/masterkey,
 		/obj/item/weapon/gun/flamer/mini_flamer,
-		/obj/item/weapon/gun/grenade_launcher/underslung,
 		/obj/item/attachable/motiondetector,
 		/obj/item/weapon/gun/rifle/pepperball/pepperball_mini,
 		/obj/item/attachable/shoulder_mount,
 		/obj/item/attachable/b7_scope,
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 	equip_slot_flags = ITEM_SLOT_BACK|ITEM_SLOT_BELT
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES
@@ -867,7 +845,7 @@
 	starting_attachment_types = list(/obj/item/attachable/foldable/som_carbine)
 	force = 10
 	burst_amount = 1
-	fire_delay = 0.15 SECONDS
+	fire_delay = 0.20 SECONDS
 	accuracy_mult = 0.75
 	scatter = 12
 	recoil = 2
@@ -875,7 +853,7 @@
 	movement_acc_penalty_mult = 4
 	burst_amount = 3
 	autoburst_delay = 0.10 SECONDS
-	damage_falloff_mult = 2.5
+	damage_falloff_mult = 2.3
 	akimbo_additional_delay = 2
 	akimbo_scatter_mod = 24
 	akimbo_additional_delay = 20
@@ -1038,7 +1016,7 @@
 		/obj/item/attachable/buildasentry,
 		/obj/item/weapon/gun/rifle/pepperball/pepperball_mini,
 		/obj/item/attachable/shoulder_mount,
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES
@@ -1103,7 +1081,7 @@
 		/obj/item/weapon/gun/flamer/mini_flamer,
 		/obj/item/weapon/gun/grenade_launcher/underslung,
 		/obj/item/weapon/gun/rifle/pepperball/pepperball_mini,
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES
@@ -1128,10 +1106,10 @@
 /obj/item/weapon/gun/rifle/mg42
 	name = "\improper MG-42 Kauser light machine gun"
 	desc = "The Kauser MG-42 is the TGMC's current standard non-IFF-capable LMG. It's known for its ability to lay down heavy fire support very well. It is generally used when someone wants to hold a position or provide fire support. It uses 10x24mm ammunition."
-
 	icon_state = "t42"
+	fire_animation = "t42_fire"
 	worn_icon_state = "t42"
-	icon = 'icons/obj/items/gun/machinegun.dmi'
+	icon = 'icons/obj/items/gun/machinegun64.dmi'
 	worn_icon_list = list(
 		slot_l_hand_str = 'icons/mob/inhands/gun/machinegun_lefthand_64.dmi',
 		slot_r_hand_str = 'icons/mob/inhands/gun/machinegun_righthand_64.dmi',
@@ -1140,10 +1118,10 @@
 	inhand_y_dimension = 32
 
 	caliber = CALIBER_10X24_CASELESS //codex
-	max_shells = 120 //codex
-	force = 30
-	aim_slowdown = 0.8
-	wield_delay = 1.2 SECONDS
+	max_shells = 150 //codex
+	force = 35
+	aim_slowdown = 0.6
+	wield_delay = 0.9 SECONDS
 	fire_sound = 'sound/weapons/guns/fire/tgmc/kinetic/gun_mg42.ogg'
 	dry_fire_sound = 'sound/weapons/guns/fire/m41a_empty.ogg'
 	cocked_sound = 'sound/weapons/guns/machineguns/MG-42/MG42_boltpull.ogg'
@@ -1151,11 +1129,14 @@
 	unload_sound = 'sound/weapons/guns/machineguns/MG-42/MG42_clipout.ogg'
 	reload_sound = 'sound/weapons/guns/machineguns/MG-42/MG42_clipin.ogg'
 	default_ammo_type = /obj/item/ammo_magazine/mg42
-	allowed_ammo_types = list(/obj/item/ammo_magazine/mg42)
+	allowed_ammo_types = list(/obj/item/ammo_magazine/mg42, /obj/item/ammo_magazine/mg42/back)
 	attachable_allowed = list(
-		/obj/item/attachable/stock/t42stock,
+		/obj/item/attachable/foldable/stock_l,
+		/obj/item/attachable/stock/stock_m,
+		/obj/item/attachable/stock/stock_h,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/b7_scope,
+		/obj/item/attachable/scope/b12_scope,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/flashlight/under,
@@ -1175,38 +1156,32 @@
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/motiondetector,
-		/obj/item/weapon/gun/pistol/plasma_pistol,
-		/obj/item/weapon/gun/shotgun/combat/masterkey,
-		/obj/item/weapon/gun/flamer/mini_flamer,
-		/obj/item/weapon/gun/grenade_launcher/underslung,
-		/obj/item/weapon/gun/rifle/pepperball/pepperball_mini,
-		/obj/item/weapon/gun/energy/lasgun/lasrifle/pocket_beam,
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 
 	gun_features_flags = GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES
 	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC, GUN_FIREMODE_AUTOBURST)
 	gun_skill_category = SKILL_HEAVY_WEAPONS
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 17,"rail_x" = 4, "rail_y" = 20, "under_x" = 16, "under_y" = 14, "stock_x" = 0, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 20, "under_x" = 23, "under_y" = 14, "stock_x" = 0, "stock_y" = 13)
 	aim_fire_delay = 0.1 SECONDS
 	aim_speed_modifier = 2
+	aim_slowdown = 1.2
 
-	starting_attachment_types = list(/obj/item/attachable/stock/t42stock)
+	starting_attachment_types = list(/obj/item/attachable/stock/stock_h)
 
 	fire_delay = 0.2 SECONDS
 	burst_delay = 0.15 SECONDS
 	extra_delay = 0.05 SECONDS
-	accuracy_mult = 1.1
+	accuracy_mult = 0.4
+	w_class = 7
+	recoil = 3
 	accuracy_mult_unwielded = 0.5
-	scatter = 2
-	scatter_unwielded = 80
-	movement_acc_penalty_mult = 6
+	scatter = 10
+	scatter_unwielded = 20
+	movement_acc_penalty_mult = 4
 
 /obj/item/weapon/gun/rifle/mg42/autorifleman
-	starting_attachment_types = list(/obj/item/attachable/verticalgrip, /obj/item/attachable/reddot)
-
-/obj/item/weapon/gun/rifle/mg42/autorifleman
-	starting_attachment_types = list(/obj/item/attachable/verticalgrip, /obj/item/attachable/reddot)
+	starting_attachment_types = list(/obj/item/attachable/stock/stock_h, /obj/item/attachable/verticalgrip, /obj/item/attachable/reddot)
 
 //-------------------------------------------------------
 //MG-60 General Purpose Machine Gun
@@ -1412,7 +1387,7 @@
 		/obj/item/weapon/gun/energy/lasgun/lasrifle/pocket_beam,
 		/obj/item/attachable/suppressor/unremovable/invisible,
 		/obj/item/attachable/scope/unremovable,
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES
@@ -1474,9 +1449,6 @@
 	accuracy_mult_unwielded = 0.8
 	damage_mult = 1.3
 
-/obj/item/weapon/gun/rifle/type71/seasonal
-	desc = "The primary rifle of many space pirates and militias, the Type 71 is a reliable rifle chambered in 7.62x39mm, firing in three round bursts to conserve ammunition."
-
 //-------------------------------------------------------
 //SH-15 AUTOMATIC SHOTGUN
 
@@ -1513,6 +1485,7 @@
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/quickfire,
 		/obj/item/attachable/stock/sh15,
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/extended_barrel,
@@ -1524,7 +1497,7 @@
 		/obj/item/weapon/gun/grenade_launcher/underslung,
 		/obj/item/weapon/gun/rifle/pepperball/pepperball_mini,
 		/obj/item/weapon/gun/energy/lasgun/lasrifle/pocket_beam, //RUTGMC EDIT
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY|GUN_SMOKE_PARTICLES //Its a shotgun type weapon effectively, most shotgun type weapons shouldn't be able to point blank 1 handed.
@@ -1782,6 +1755,7 @@
 	allowed_ammo_types = list(
 		/obj/item/ammo_magazine/rifle/sr127,
 		/obj/item/ammo_magazine/rifle/sr127/flak,
+		/obj/item/ammo_magazine/rifle/sr127/heapin,
 	)
 	attachable_allowed = list(
 		/obj/item/attachable/scope/unremovable/sr127,
@@ -1813,7 +1787,7 @@
 	)
 
 	burst_amount = 0
-	fire_delay = 1.35 SECONDS
+	fire_delay = 1.7 SECONDS
 	accuracy_mult = 1.15
 	accuracy_mult_unwielded = 0.7
 	scatter = -5
@@ -1919,18 +1893,18 @@
 	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC, GUN_FIREMODE_BURSTFIRE, GUN_FIREMODE_AUTOBURST)
 	starting_attachment_types = list(/obj/item/attachable/stock/ar11, /obj/item/attachable/scope/mini/ar11)
 	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 6, "rail_y" = 20, "under_x" = 20, "under_y" = 12, "stock_x" = 17, "stock_y" = 14)
-	aim_fire_delay = 0.15 SECONDS
+	aim_fire_delay = 0.1 SECONDS
 
-	fire_delay = 0.25 SECONDS
+	fire_delay = 0.2 SECONDS
 	burst_amount = 3
 	burst_delay = 0.05 SECONDS
 	extra_delay = 0.15 SECONDS
 	accuracy_mult_unwielded = 0.5
-	accuracy_mult = 1.15
+	accuracy_mult = 1.05
 	scatter = -1
 	scatter_unwielded = 15
 	aim_slowdown = 0.45
-	movement_acc_penalty_mult = 6
+	movement_acc_penalty_mult = 4
 
 /obj/item/weapon/gun/rifle/ar11/scopeless
 	starting_attachment_types = list(/obj/item/attachable/stock/ar11)
@@ -1974,6 +1948,10 @@
 		/obj/item/ammo_magazine/rifle/ar21/extended,
 	)
 	attachable_allowed = list(
+		/obj/item/attachable/stock/stock_mh,
+		/obj/item/attachable/foldable/stock_l,
+		/obj/item/attachable/stock/stock_m,
+		/obj/item/attachable/stock/stock_h,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/b7_scope,
 		/obj/item/attachable/verticalgrip,
@@ -2001,22 +1979,27 @@
 		/obj/item/attachable/motiondetector,
 		/obj/item/weapon/gun/rifle/pepperball/pepperball_mini,
 		/obj/item/weapon/gun/energy/lasgun/lasrifle/pocket_beam,
-        /obj/item/weapon/gun/flamer/hydro_cannon,
+		/obj/item/weapon/gun/flamer/hydro_cannon,
 	)
 
 	gun_features_flags = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_SMOKE_PARTICLES
 	gun_firemode_list = list(GUN_FIREMODE_AUTOMATIC)
-	attachable_offset = list("muzzle_x" = 46, "muzzle_y" = 16,"rail_x" = 18, "rail_y" = 19, "under_x" = 34, "under_y" = 13, "stock_x" = 0, "stock_y" = 13)
+	starting_attachment_types = list(/obj/item/attachable/stock/stock_mh)
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16,"rail_x" = 8, "rail_y" = 19, "under_x" = 24, "under_y" = 13, "stock_x" = 0, "stock_y" = 12)
 	aim_fire_delay = 0.15 SECONDS
 	aim_speed_modifier = 2.5
 
 	fire_delay = 0.25 SECONDS
 	burst_amount = 1
 	burst_delay = 0.15 SECONDS
-	accuracy_mult = 1.2
-	scatter = -2
+	accuracy_mult = 1
+	w_class = 7
+	recoil = 2
+	force = 30
+	scatter = 4
 	wield_delay = 0.8 SECONDS
 	aim_slowdown = 0.5
+	movement_acc_penalty_mult = 2.5
 	damage_falloff_mult = 0.5
 
 /obj/item/weapon/gun/rifle/ar21/standard
@@ -2024,6 +2007,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/weapon/gun/grenade_launcher/underslung,
+		/obj/item/attachable/stock/stock_mh,
 	)
 
 //-------------------------------------------------------

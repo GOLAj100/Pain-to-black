@@ -3,33 +3,38 @@
 	hud_state = "pistol"
 	hud_state_empty = "pistol_empty"
 	ammo_behavior_flags = AMMO_BALLISTIC
-	damage = 15
+	damage = 25
 	penetration = 5
 	accurate_range = 5
-	additional_xeno_penetration = 20
+	damage_falloff = 1
+	additional_xeno_penetration = 10
+	matter_cost = 3
 
 /datum/ammo/bullet/pistol/tiny
 	name = "light pistol bullet"
 	hud_state = "pistol_light"
-	damage = 12
+	damage = 27.5
 	penetration = 5
-	additional_xeno_penetration = 17.5
+	additional_xeno_penetration = 7.5
+	matter_cost = 2
 
 /datum/ammo/bullet/pistol/tiny/ap
 	name = "light pistol bullet"
 	hud_state = "pistol_lightap"
-	damage = 20
+	damage = 22.5
 	penetration = 15 //So it can actually hurt something.
 	additional_xeno_penetration = 7.5
 	damage_falloff = 1.5
+	matter_cost = 8
 
 /datum/ammo/bullet/pistol/tranq
 	name = "tranq bullet"
 	hud_state = "pistol_tranq"
-	damage = 25
+	damage = 22.5
 	damage_type = STAMINA
+	matter_cost = 0
 
-/datum/ammo/bullet/pistol/tranq/on_hit_mob(mob/victim, obj/projectile/proj)
+/datum/ammo/bullet/pistol/tranq/on_hit_mob(mob/victim, atom/movable/projectile/proj)
 	if(iscarbon(victim))
 		var/mob/living/carbon/carbon_victim = victim
 		carbon_victim.reagents.add_reagent(/datum/reagent/toxin/potassium_chlorophoride, 1)
@@ -37,21 +42,36 @@
 /datum/ammo/bullet/pistol/hollow
 	name = "hollowpoint pistol bullet"
 	hud_state = "pistol_hollow"
-	damage = 12.5
 	accuracy = -10
 	shrapnel_chance = 45
 	additional_xeno_penetration = 30
+	matter_cost = 0
 
-/datum/ammo/bullet/pistol/hollow/on_hit_mob(mob/target_mob,obj/projectile/proj)
+/datum/ammo/bullet/pistol/hollow/on_hit_mob(mob/target_mob,atom/movable/projectile/proj)
 	staggerstun(target_mob, proj, stagger = 2 SECONDS, slowdown = 0.5, knockback = 1)
 
 /datum/ammo/bullet/pistol/ap
 	name = "armor-piercing pistol bullet"
 	hud_state = "pistol_ap"
-	damage = 15
-	penetration = 12.5
+	damage = 20
+	penetration = 10
+	damage_falloff = 0.1
 	shrapnel_chance = 15
-	additional_xeno_penetration = 12.5
+	additional_xeno_penetration = 10
+	matter_cost = 16
+
+/datum/ammo/bullet/pistol/hp
+	name = "hollowpoint pistol bullet"
+	hud_state = "pistol_hollow"
+	damage = 45
+	damage_falloff = 4
+	shrapnel_chance = 25
+	penetration = -5
+	additional_xeno_penetration = -5
+	matter_cost = 6
+
+/datum/ammo/bullet/pistol/hp/on_hit_mob(mob/target_mob,atom/movable/projectile/proj)
+	staggerstun(target_mob, proj, stagger = 2 SECONDS, slowdown = 0.5)
 
 /datum/ammo/bullet/pistol/ap/smart
 	ammo_behavior_flags = AMMO_BALLISTIC|AMMO_IFF
@@ -59,10 +79,20 @@
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
 	hud_state = "pistol_heavy"
-	damage = 25
+	damage = 30
 	penetration = 5
 	shrapnel_chance = 25
-	additional_xeno_penetration = 20
+	additional_xeno_penetration = 12.5
+	matter_cost = 6
+
+/datum/ammo/bullet/pistol/heavy/incendiary
+	name = "incendiary submachinegun ACP bullet"
+	hud_state = "pistol_fire"
+	ammo_behavior_flags = AMMO_BALLISTIC|AMMO_INCENDIARY
+	damage_type = BURN
+	damage = 30
+	penetration = 5
+	additional_xeno_penetration = 0
 
 /datum/ammo/bullet/pistol/superheavy
 	name = "high impact pistol bullet"
@@ -71,15 +101,17 @@
 	penetration = 15
 	additional_xeno_penetration = 10
 	damage_falloff = 0.75
+	matter_cost = 0
 
-/datum/ammo/bullet/pistol/superheavy/on_hit_mob(mob/target_mob,obj/projectile/proj)
+/datum/ammo/bullet/pistol/superheavy/on_hit_mob(mob/target_mob,atom/movable/projectile/proj)
 	staggerstun(target_mob, proj, stagger = 0.5 SECONDS, slowdown = 0.5, knockback = 1)
 
 /datum/ammo/bullet/pistol/superheavy/derringer
 	handful_amount = 2
 	handful_icon_state = "derringer"
+	matter_cost = 0
 
-/datum/ammo/bullet/pistol/superheavy/derringer/on_hit_mob(mob/target_mob,obj/projectile/proj)
+/datum/ammo/bullet/pistol/superheavy/derringer/on_hit_mob(mob/target_mob,atom/movable/projectile/proj)
 	staggerstun(target_mob, proj, slowdown = 0.5)
 
 /datum/ammo/bullet/pistol/incendiary
@@ -91,15 +123,17 @@
 	damage = 20
 	penetration = 0
 	additional_xeno_penetration = 0
+	matter_cost = 23
 
 /datum/ammo/bullet/pistol/squash
 	name = "squash-head pistol bullet"
 	hud_state = "pistol_squash"
 	accuracy = 5
-	damage = 26
+	damage = 32
 	penetration = 10
 	shrapnel_chance = 25
 	additional_xeno_penetration = 20
+	matter_cost = 0
 
 /datum/ammo/bullet/pistol/mankey
 	name = "live monkey"
@@ -111,8 +145,9 @@
 	ammo_behavior_flags = AMMO_INCENDIARY
 	shell_speed = 2
 	damage = 15
+	matter_cost = 0
 
-/datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/target_mob, obj/projectile/proj)
+/datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/target_mob, atom/movable/projectile/proj)
 	if(!target_mob.stat && !ismonkey(target_mob))
 		proj.visible_message(span_danger("The [src] chimpers furiously!"))
 		new /mob/living/carbon/human/species/monkey(proj.loc)

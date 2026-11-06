@@ -89,7 +89,7 @@
 	if(user != loc)
 		return
 	if(modded)
-		. += span_warning(" Fuel faucet is wrenched open, leaking the fuel!")
+		. += span_warning("Fuel faucet is wrenched open, leaking the fuel!")
 	if(rig)
 		. += span_notice("There is some kind of device rigged to the tank.")
 
@@ -162,7 +162,7 @@
 	overlay.pixel_y = 6
 	add_overlay(overlay)
 
-/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/proj)
+/obj/structure/reagent_dispensers/fueltank/bullet_act(atom/movable/projectile/proj)
 	if(exploding)
 		return FALSE
 	. = ..()

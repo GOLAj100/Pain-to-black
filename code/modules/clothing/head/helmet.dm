@@ -230,6 +230,18 @@
 	anti_hug = 4
 	item_map_variant_flags = (ITEM_JUNGLE_VARIANT|ITEM_ICE_VARIANT|ITEM_PRISON_VARIANT|ITEM_ICE_PROTECTION)
 
+/obj/item/clothing/head/helmet/marine/b16
+	name = "\improper B16 helmet"
+	desc = "The B18 Helmet that goes along with the B18 Defensive Armor. It's heavy, reinforced, and protects more of the face."
+	icon_state = "h_combat"
+	soft_armor = list(MELEE = 65, BULLET = 80, LASER = 80, ENERGY = 65, BOMB = 75, BIO = 65, FIRE = 80, ACID = 65)
+	inv_hide_flags = HIDEALLHAIR|HIDEEARS
+	item_flags = SYNTH_RESTRICTED
+	resistance_flags = UNACIDABLE
+	anti_hug = 6
+	item_map_variant_flags = (ITEM_JUNGLE_VARIANT|ITEM_ICE_VARIANT|ITEM_PRISON_VARIANT|ITEM_ICE_PROTECTION)
+
+
 /obj/item/clothing/head/helmet/marine/pilot
 	name = "\improper M30 tactical helmet"
 	desc = "The M30 tactical helmet has an left eyepiece filter used to filter tactical data. It is used by pilots in the TGN. This one is in gunmetal blue."

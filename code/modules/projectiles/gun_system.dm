@@ -732,6 +732,7 @@
 	if(master_gun)
 		SEND_SIGNAL(gun_user, COMSIG_MOB_ATTACHMENT_FIRED, target, src, master_gun)
 	gun_user?.client?.mouse_pointer_icon = 'icons/effects/supplypod_target.dmi'
+	return TRUE
 
 ///Set the target and take care of hard delete
 /obj/item/weapon/gun/proc/set_target(atom/object)
@@ -818,7 +819,7 @@
 	if(CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_CYCLE_ONLY_BEFORE_FIRE))
 		cycle(gun_user, FALSE)
 	//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
-	var/obj/projectile/projectile_to_fire = in_chamber //Load a bullet in or check for existing one.
+	var/atom/movable/projectile/projectile_to_fire = in_chamber //Load a bullet in or check for existing one.
 	if(!projectile_to_fire) //If there is nothing to fire, click.
 		playsound(src, dry_fire_sound, 25, 1, 5)
 		if(CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_ROTATES_CHAMBER) && !CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_REQUIRES_UNIQUE_ACTION) && !CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_CYCLE_ONLY_BEFORE_FIRE))
@@ -851,7 +852,7 @@
 			playsound(src, empty_sound, 25, 1)
 			unload(after_fire = TRUE)
 	update_ammo_count()
-	gun_user?.hud_used.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
+	gun_user?.hud_used?.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
 	update_icon()
 	if(dual_wield && (gun_firemode == GUN_FIREMODE_SEMIAUTO || gun_firemode == GUN_FIREMODE_BURSTFIRE))
 		var/obj/item/weapon/gun/inactive_gun = gun_user.get_inactive_held_item()
@@ -878,7 +879,7 @@
 ///Actually fires the gun, sets up the projectile and fires it.
 /obj/item/weapon/gun/proc/do_fire(obj/object_to_fire)
 	var/firer = (issentry(loc) && !gun_user) ? loc : gun_user
-	var/obj/projectile/projectile_to_fire = object_to_fire
+	var/atom/movable/projectile/projectile_to_fire = object_to_fire
 	if(CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_HANDFULS))
 		projectile_to_fire = get_ammo_object()
 	apply_gun_modifiers(projectile_to_fire, target, firer)
@@ -916,7 +917,7 @@
 	var/firing_angle = get_angle_with_scatter((gun_user || get_turf(src)), target, proj_scatter, projectile_to_fire.p_x, projectile_to_fire.p_y)
 
 	//Finally, make with the pew pew!
-	if(!isobj(projectile_to_fire))
+	if(!ismovable(projectile_to_fire))
 		stack_trace("projectile malfunctioned while firing. User: [gun_user]")
 		return
 	play_fire_sound(loc)
@@ -1074,7 +1075,7 @@
 
 	if(CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_CYCLE_ONLY_BEFORE_FIRE))
 		cycle(gun_user, FALSE) // fookin laser sights
-	var/obj/projectile/projectile_to_fire = in_chamber
+	var/atom/movable/projectile/projectile_to_fire = in_chamber
 	if(!projectile_to_fire) //We actually have a projectile, let's move on.
 		playsound(src, dry_fire_sound, 25, 1, 5)
 		cycle(user, FALSE)
@@ -1304,6 +1305,7 @@
 			var/obj/item/ammo_magazine/magazine = new_mag
 			magazine.on_inserted(src)
 		if(!in_chamber && !CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_REQUIRES_UNIQUE_ACTION) && !CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_CYCLE_ONLY_BEFORE_FIRE))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), src, cocked_sound, 25, 1), 1 SECONDS)
 			cycle(user, FALSE)
 		update_ammo_count()
 		update_icon()
@@ -1317,6 +1319,11 @@
 		if(CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_HANDFULS))
 			var/obj/item/ammo_magazine/mag = new_mag
 			if(CHECK_BITFIELD(mag.magazine_flags, MAGAZINE_HANDFUL))
+				if(mag.reload_delay > 0 && user && !force)
+					to_chat(user, span_notice("You begin reloading [src] with [mag]."))
+					if(!do_after(user, mag.reload_delay, NONE, user))
+						to_chat(user, span_warning("Your reload was interupted!"))
+						return FALSE
 				if(mag.current_rounds > 1)
 					items_to_insert += mag.create_handful(null, 1)
 				else
@@ -1402,9 +1409,9 @@
 		if(!in_chamber)
 			return FALSE
 		var/obj/obj_in_chamber
-		if(istype(in_chamber, /obj/projectile))
+		if(istype(in_chamber, /atom/movable/projectile))
 			if(!CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_DO_NOT_EJECT_HANDFULS))
-				var/obj/projectile/projectile_in_chamber = in_chamber
+				var/atom/movable/projectile/projectile_in_chamber = in_chamber
 				var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful()
 				new_handful.generate_handful(projectile_in_chamber.ammo.type, caliber, 1, projectile_in_chamber.ammo.handful_amount)
 				obj_in_chamber = new_handful
@@ -1474,7 +1481,7 @@
 			playsound(src, cocked_sound, 25, 1)
 			if(cocked_message)
 				to_chat(user, span_notice(cocked_message))
-			var/obj/projectile/projectile_in_chamber = in_chamber
+			var/atom/movable/projectile/projectile_in_chamber = in_chamber
 			var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful()
 			new_handful.generate_handful(projectile_in_chamber.ammo.type, caliber, 1, projectile_in_chamber.ammo.handful_amount)
 			user.put_in_any_hand_if_possible(new_handful)
@@ -1524,8 +1531,8 @@
 	var/datum/ammo/new_ammo = get_ammo()
 	if(!new_ammo)
 		return
-	var/projectile_type = CHECK_BITFIELD(initial(new_ammo.ammo_behavior_flags), AMMO_HITSCAN) ? /obj/projectile/hitscan : /obj/projectile
-	var/obj/projectile/projectile = new projectile_type(null, initial(new_ammo.hitscan_effect_icon))
+	var/projectile_type = CHECK_BITFIELD(initial(new_ammo.ammo_behavior_flags), AMMO_HITSCAN) ? /atom/movable/projectile/hitscan : /atom/movable/projectile
+	var/atom/movable/projectile/projectile = new projectile_type(null, initial(new_ammo.hitscan_effect_icon))
 	projectile.generate_bullet(new_ammo)
 	return projectile
 
@@ -1536,7 +1543,7 @@
 		if(CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_HANDFULS))
 			ammo_type = get_magazine_default_ammo(in_chamber)
 		else if(CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_MAGAZINES))
-			var/obj/projectile/projectile_in_chamber = in_chamber
+			var/atom/movable/projectile/projectile_in_chamber = in_chamber
 			ammo_type = projectile_in_chamber.ammo.type
 		else
 			ammo_type = initial(ammo_datum_type)
@@ -1581,7 +1588,7 @@
 				new_rounds++
 		rounds = new_rounds
 		max_rounds = max_chamber_items + 1
-		gun_user?.hud_used.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
+		gun_user?.hud_used?.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
 		return
 	var/total_rounds
 	var/total_max_rounds
@@ -1592,7 +1599,7 @@
 	if(!CHECK_BITFIELD(reciever_flags, AMMO_RECIEVER_DO_NOT_EMPTY_ROUNDS_AFTER_FIRE))
 		rounds += in_chamber ? rounds_per_shot : 0
 	max_rounds = total_max_rounds
-	gun_user?.hud_used.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
+	gun_user?.hud_used?.update_ammo_hud(src, get_ammo_list(), get_display_ammo_count())
 
 ///Checks to see if the current object in chamber is a worn magazine and if so unloads it
 /obj/item/weapon/gun/proc/drop_connected_mag(datum/source, mob/user)
@@ -1742,7 +1749,7 @@
 		return
 	playsound(location, fire_sound, GUN_FIRE_SOUND_VOLUME, firing_sndfreq ? TRUE : FALSE, frequency = firing_sndfreq)
 
-/obj/item/weapon/gun/proc/apply_gun_modifiers(obj/projectile/projectile_to_fire, atom/target, firer)
+/obj/item/weapon/gun/proc/apply_gun_modifiers(atom/movable/projectile/projectile_to_fire, atom/target, firer)
 	projectile_to_fire.shot_from = src
 	projectile_to_fire.damage *= damage_mult
 	projectile_to_fire.sundering *= damage_mult

@@ -6,11 +6,7 @@
 	use_power = NO_POWER_USE
 	products = list(
 		"Weapon" = list(
-			/obj/item/weapon/gun/rifle/saiga12 = -1,
-			/obj/item/ammo_magazine/rifle/typesh12/flechette = -1,
-			/obj/item/ammo_magazine/rifle/typesh12/slug = -1,
-			/obj/item/ammo_magazine/rifle/typesh12 = -1,
-            /obj/item/weapon/gun/energy/lasgun/lasrifle/tesla = -1,
+			/obj/item/weapon/gun/energy/lasgun/lasrifle/tesla = -1,
 			/obj/item/cell/lasgun/lasrifle/recharger = -1,
 			/obj/item/weapon/gun/rifle/railgun = -1,
 			/obj/item/ammo_magazine/railgun = -1,
@@ -54,6 +50,7 @@
 			/obj/item/explosive/grenade/smokebomb/neuro = -1,
 			/obj/item/explosive/grenade/smokebomb/acid = -1,
 			/obj/item/explosive/grenade/smokebomb/satrapine = -1,
+			/obj/item/ammo_magazine/mg42/back = -1,
 			/obj/item/weapon/gun/rifle/m412l1_hpr = -1,
 			/obj/item/ammo_magazine/m412l1_hpr = -1,
 			/obj/item/weapon/gun/rifle/famas = -1,
@@ -195,7 +192,6 @@
 			/obj/item/weapon/gun/shotgun/pump/cmb = -1,
 			/obj/item/weapon/gun/rifle/mpi_km = -1,
 			/obj/item/ammo_magazine/rifle/mpi_km/plum = -1,
-			/obj/item/ammo_magazine/packet/groza = -1,
 			/obj/item/weapon/gun/rifle/m16 = -1,
 			/obj/item/ammo_magazine/rifle/m16 = -1,
 			/obj/item/ammo_magazine/packet/pnato = -1,
@@ -205,8 +201,6 @@
 			/obj/item/ammo_magazine/rifle = -1,
 			/obj/item/weapon/gun/rifle/m41a = -1,
 			/obj/item/ammo_magazine/rifle/m41a = -1,
-			/obj/item/weapon/gun/rifle/type71/seasonal = -1,
-			/obj/item/ammo_magazine/rifle/type71 = -1,
 			/obj/item/weapon/gun/rifle/alf_machinecarbine = -1,
 			/obj/item/ammo_magazine/rifle/alf_machinecarbine = -1,
 			/obj/item/weapon/gun/shotgun/pump/lever = -1,
@@ -416,6 +410,9 @@
 			/obj/item/ammo_magazine/tank/ltb_cannon/canister = -1,
 			/obj/item/armored_weapon/ltaap = -1,
 			/obj/item/ammo_magazine/tank/ltaap_chaingun = -1,
+			/obj/item/armored_weapon/tank_autocannon = -1,
+			/obj/item/ammo_magazine/tank/autocannon = -1,
+			/obj/item/ammo_magazine/tank/autocannon/high_explosive = -1,
 			/obj/item/armored_weapon/bfg = -1,
 			/obj/item/ammo_magazine/tank/bfg = -1,
 			/obj/item/armored_weapon/secondary_weapon = -1,
@@ -449,8 +446,5 @@
 			/obj/item/ammo_magazine/tank/sarden_clip = -1,
 			/obj/item/ammo_magazine/tank/icc_lowvel_cannon = -1,
 			/obj/item/ammo_magazine/tank/icc_lowvel_cannon/high_explosive = -1,
-		),
-		"Skill pamphlet" = list(
-			/obj/item/pamphlet/tank_crew = -1,
 		),
 	)

@@ -81,8 +81,8 @@
 	update_icon()
 	return TRUE
 
-/obj/item/attachable/lace/t500
-	name = "R-500 lace"
+/obj/item/attachable/lace/t76
+	name = "R-76 lace"
 	icon = 'icons/obj/items/attachments/attachments_64.dmi'
 	slot = ATTACHMENT_SLOT_STOCK
 	pixel_shift_x = 0

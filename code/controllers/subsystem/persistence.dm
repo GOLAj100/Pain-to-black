@@ -28,13 +28,7 @@ SUBSYSTEM_DEF(persistence)
 	///Available gun seasons
 	var/list/seasons_buckets = list(
 		SEASONAL_GUNS = list(
-		/datum/season_datum/weapons/guns/pistol_seasonal_one,
-		/datum/season_datum/weapons/guns/rifle_seasonal_one,
-		/datum/season_datum/weapons/guns/pistol_seasonal_two,
-		/datum/season_datum/weapons/guns/rifle_seasonal_two,
-		/datum/season_datum/weapons/guns/rifle_seasonal_three,
-		/datum/season_datum/weapons/guns/copsandrobbers_seasonal,
-		/datum/season_datum/weapons/guns/shotgun_seasonal,
+		/datum/season_datum/weapons/guns/ww_seasonal_one,
 		/datum/season_datum/weapons/guns/lever_seasonal,
 		),
 		SEASONAL_HEAVY = list(
@@ -42,6 +36,7 @@ SUBSYSTEM_DEF(persistence)
 		/datum/season_datum/weapons/guns/heavy_ff,
 		/datum/season_datum/weapons/guns/heavy_autorail,
 		/datum/season_datum/weapons/guns/heavy_shock,
+		/datum/season_datum/weapons/guns/heavy_unpopular,
 		),
 	)
 	///The saved list of custom outfits names
@@ -199,107 +194,76 @@ SUBSYSTEM_DEF(persistence)
 	///Items that the season contains
 	var/list/item_list = list()
 
-/datum/season_datum/weapons/guns/rifle_seasonal_one
-	name = "Old Earth"
-	description = "Ancient Earth guns. Antique and obsolete, but no less deadly"
+/datum/season_datum/weapons/guns/ww_seasonal_one
+	name = "World war 1-3"
+	description = "Ancient Earth guns. Antique and obsolete, but no less deadly."
 	item_list = list(
 		/obj/item/weapon/gun/rifle/mkh = -1,
 		/obj/item/ammo_magazine/rifle/mkh = -1,
 		/obj/item/weapon/gun/smg/ppsh = -1,
 		/obj/item/ammo_magazine/smg/ppsh = -1,
 		/obj/item/ammo_magazine/smg/ppsh/extended = -1,
+		/obj/item/weapon/gun/smg/mp7 = -1,
+		/obj/item/ammo_magazine/smg/mp7 = -1,
 		/obj/item/weapon/gun/rifle/garand = -1,
 		/obj/item/ammo_magazine/rifle/garand = -1,
+		/obj/item/weapon/gun/shotgun/pump/bolt = -1,
+		/obj/item/ammo_magazine/rifle/boltclip = -1,
+		/obj/item/ammo_magazine/packet/mosin = -1,
+		/obj/item/weapon/gun/revolver/upp = 5,
+		/obj/item/ammo_magazine/revolver/upp = -1,
+		/obj/item/weapon/gun/pistol/highpower = 5,
+		/obj/item/ammo_magazine/pistol/highpower = -1,
 		/obj/item/weapon/gun/pistol/m1911 = 5,
 		/obj/item/ammo_magazine/pistol/m1911 = -1,
-		)
-
-/datum/season_datum/weapons/guns/rifle_seasonal_two
-	name = "Pulse Weapons"
-	description = "Top-of-the-line pulse rifles, and a machinecarbine."
-	item_list = list(
+		/obj/item/weapon/gun/rifle/mpi_km= -1,
+		/obj/item/ammo_magazine/rifle/mpi_km/plum = -1,
+		/obj/item/ammo_magazine/packet/rifle762x39 = -1,
+		/obj/item/weapon/gun/rifle/m16 = -1,
+		/obj/item/ammo_magazine/rifle/m16 = -1,
+		/obj/item/ammo_magazine/packet/pnato = -1,
 		/obj/item/weapon/gun/rifle/m412 = -1,
 		/obj/item/ammo_magazine/rifle = -1,
+		/obj/item/weapon/gun/revolver/judge = 5,
+		/obj/item/ammo_magazine/revolver/judge = -1,
+		/obj/item/ammo_magazine/revolver/judge/buckshot = -1,
+		/obj/item/weapon/gun/pistol/g22 = 5,
+		/obj/item/ammo_magazine/pistol/g22 = -1,
+		/obj/item/weapon/gun/pistol/heavy = 5,
+		/obj/item/ammo_magazine/pistol/heavy = -1,
+		/obj/item/weapon/gun/smg/uzi = -1,
+		/obj/item/ammo_magazine/smg/uzi = -1,
+		/obj/item/weapon/gun/smg/skorpion = 5,
+		/obj/item/ammo_magazine/smg/skorpion = -1,
+		/obj/item/weapon/gun/smg/m25 = -1,
+		/obj/item/ammo_magazine/smg/m25 = -1,
+		/obj/item/storage/holster/m25 = -1,
+		/obj/item/weapon/gun/shotgun/pump/cmb = -1,
 		/obj/item/weapon/gun/rifle/m41a = -1,
 		/obj/item/ammo_magazine/rifle/m41a = -1,
-		/obj/item/weapon/gun/rifle/type71/seasonal = -1,
-		/obj/item/ammo_magazine/rifle/type71 = -1,
-		/obj/item/ammo_magazine/packet/groza = -1,
+		/obj/item/weapon/gun/revolver/cmb = 5,
+		/obj/item/ammo_magazine/revolver/cmb = -1,
+		/obj/item/weapon/gun/revolver/small = 5,
+		/obj/item/ammo_magazine/revolver/small = -1,
+		/obj/item/weapon/gun/shotgun/combat = -1,
+		/obj/item/weapon/gun/shotgun/pump = -1,
 		/obj/item/weapon/gun/rifle/alf_machinecarbine = -1,
 		/obj/item/ammo_magazine/rifle/alf_machinecarbine = -1,
 		)
 
-/datum/season_datum/weapons/guns/rifle_seasonal_three
-	name = "Cold War"
-	description = "Hot guns from the Cold War"
+/datum/season_datum/weapons/guns/lever_seasonal
+	name = "Wild West"
+	description = "Try and win the modern west with these."
 	item_list = list(
-		/obj/item/weapon/gun/rifle/mpi_km= -1,
-		/obj/item/ammo_magazine/rifle/mpi_km/plum = -1,
-		/obj/item/ammo_magazine/packet/groza = -1,
-		/obj/item/weapon/gun/rifle/m16 = -1,
-		/obj/item/ammo_magazine/rifle/m16 = -1,
-		/obj/item/ammo_magazine/packet/pnato = -1,
-		)
-
-/datum/season_datum/weapons/guns/pistol_seasonal_one
-	name = "High Noon"
-	description = "Revolvers? They are yours my friend. Bouncy, single-action, or with buckshot"
-	item_list = list(
-		/obj/item/weapon/gun/revolver/small = 5,
-		/obj/item/ammo_magazine/revolver/small = -1,
+		/obj/item/weapon/gun/shotgun/pump/lever/repeater = -1,
+		/obj/item/ammo_magazine/packet/p4570 = -1,
+		/obj/item/weapon/gun/shotgun/double/martini = -1,
+		/obj/item/ammo_magazine/rifle/martini = -1,
+		/obj/item/ammo_magazine/rifle/martini/white = -1,
+		/obj/item/weapon/gun/revolver/coltrifle = 5,
+		/obj/item/ammo_magazine/revolver/rifle = -1,
 		/obj/item/weapon/gun/revolver/single_action/m44 = 5,
 		/obj/item/ammo_magazine/revolver = -1,
-		/obj/item/weapon/gun/revolver/judge = 5,
-		/obj/item/ammo_magazine/revolver/judge = -1,
-		/obj/item/ammo_magazine/revolver/judge/buckshot = -1,
-		/obj/item/weapon/gun/revolver/upp = 5,
-		/obj/item/ammo_magazine/revolver/upp = -1,
-		)
-
-/datum/season_datum/weapons/guns/pistol_seasonal_two
-	name = "G22 and high-power gats"
-	description = "Four pistols for the pistol mains."
-	item_list = list(
-		/obj/item/weapon/gun/pistol/g22 = 5,
-		/obj/item/ammo_magazine/pistol/g22 = -1,
-		/obj/item/weapon/gun/pistol/vp78 = 5,
-		/obj/item/ammo_magazine/pistol/vp78 = -1,
-		/obj/item/weapon/gun/pistol/heavy = 5,
-		/obj/item/ammo_magazine/pistol/heavy = -1,
-		/obj/item/weapon/gun/pistol/highpower = 5,
-		/obj/item/ammo_magazine/pistol/highpower = -1,
-		)
-
-/datum/season_datum/weapons/guns/copsandrobbers_seasonal
-	name = "SWAT and Terrorists"
-	description = "Four classic SMGs, and no one's favorite burst revolver."
-	item_list = list(
-		/obj/item/weapon/gun/smg/uzi = -1,
-		/obj/item/ammo_magazine/smg/uzi = -1,
-		/obj/item/weapon/gun/smg/m25 = -1,
-		/obj/item/ammo_magazine/smg/m25 = -1,
-		/obj/item/storage/holster/m25 = -1,
-		/obj/item/weapon/gun/smg/mp7 = -1,
-		/obj/item/ammo_magazine/smg/mp7 = -1,
-		/obj/item/weapon/gun/smg/skorpion = 5,
-		/obj/item/ammo_magazine/smg/skorpion = -1,
-		/obj/item/weapon/gun/revolver/cmb = 5,
-		/obj/item/ammo_magazine/revolver/cmb = -1,
-		)
-
-/datum/season_datum/weapons/guns/shotgun_seasonal
-	name = "Pumps"
-	description = "Three classic pump shotguns from older times."
-	item_list = list(
-		/obj/item/weapon/gun/shotgun/combat = -1,
-		/obj/item/weapon/gun/shotgun/pump = -1,
-		/obj/item/weapon/gun/shotgun/pump/cmb = -1,
-		)
-
-/datum/season_datum/weapons/guns/lever_seasonal
-	name = "Lever Actions"
-	description = "Try and win the modern west with these"
-	item_list = list(
 		/obj/item/weapon/gun/shotgun/pump/lever = -1,
 		/obj/item/weapon/gun/shotgun/pump/lever/mbx900 = -1,
 		/obj/item/ammo_magazine/shotgun/mbx900 = -1,
@@ -358,4 +322,18 @@ SUBSYSTEM_DEF(persistence)
 		/obj/item/ammo_magazine/rocket/recoilless/cloak = 4,
 		/obj/item/ammo_magazine/rocket/recoilless/smoke = 4,
 		/obj/item/ammo_magazine/rocket/recoilless/plasmaloss = 4,
+	)
+
+/datum/season_datum/weapons/guns/heavy_unpopular
+	name = "Unpopular cargo guns"
+	description = "PTRS, OICW and FAMAS for roundstart vendors."
+	item_list = list(
+		/obj/item/weapon/gun/clf_heavyrifle/imported = 2,
+		/obj/item/shotgunbox/clf_heavyrifle = 2,
+		/obj/item/weapon/gun/rifle/tx55 = 2,
+		/obj/item/ammo_magazine/rifle/tx54 = 10,
+		/obj/item/ammo_magazine/rifle/tx54/incendiary = 4,
+		/obj/item/ammo_magazine/rifle/tx54/smoke/tangle = 4,
+		/obj/item/weapon/gun/rifle/famas = 2,
+		/obj/item/ammo_magazine/rifle/famas = -1,
 	)

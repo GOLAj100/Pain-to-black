@@ -152,6 +152,17 @@
 	)
 	storage_type_limits_max = list(/obj/item/weapon/gun/launcher/rocket/m57a4/t57 = 1)
 
+/datum/storage/holster/ar18
+	storage_slots = 3
+	max_storage_space = 8
+
+/datum/storage/holster/ar18/New(atom/parent)
+	. = ..()
+	set_holdable(can_hold_list = list(
+		/obj/item/weapon/gun/rifle/ar18,
+		/obj/item/ammo_magazine/rifle/ar18,
+	))
+
 /datum/storage/holster/t19
 	storage_slots = 4
 	max_storage_space = 10
@@ -208,14 +219,10 @@
 		/obj/item/cell/lasgun/volkite/small,
 	))
 
-/datum/storage/holster/belt/t500/New(atom/parent)
+/datum/storage/holster/belt/t312/New(atom/parent)
 	. = ..()
 	set_holdable(can_hold_list = list(
-		/obj/item/weapon/gun/revolver/t500,
 		/obj/item/weapon/gun/revolver/t312,
-		/obj/item/ammo_magazine/revolver/t500,
-		/obj/item/ammo_magazine/revolver/t500/slavs,
-		/obj/item/ammo_magazine/packet/t500,
 		/obj/item/ammo_magazine/revolver/t312,
 		/obj/item/ammo_magazine/packet/t312,
 		/obj/item/ammo_magazine/handful

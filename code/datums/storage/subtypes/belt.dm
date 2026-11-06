@@ -157,7 +157,7 @@
 	storage_slots = 9
 
 /datum/storage/belt/marine
-	storage_slots = 6
+	storage_slots = 10
 	max_w_class = WEIGHT_CLASS_NORMAL
 	max_storage_space = 18
 

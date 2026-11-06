@@ -6,21 +6,21 @@
 	invisibility = 0
 	resistance_flags = UNACIDABLE|PLASMACUTTER_IMMUNE|PROJECTILE_IMMUNE
 	spawn_types = list(
-		/mob/living/carbon/human/species/zombie/ai/patrol = 80,
-		/mob/living/carbon/human/species/zombie/ai/fast/patrol = 5,
-		/mob/living/carbon/human/species/zombie/ai/tank/patrol = 5,
-		/mob/living/carbon/human/species/zombie/ai/smoker/patrol = 5,
-		/mob/living/carbon/human/species/zombie/ai/strong/patrol = 5,
+		/mob/living/carbon/human/species/zombie/ai/patrol = 600,
+		/mob/living/carbon/human/species/zombie/ai/fast/patrol = 600,
+		/mob/living/carbon/human/species/zombie/ai/tank/patrol = 600,
+		/mob/living/carbon/human/species/zombie/ai/smoker/patrol = 600,
+		/mob/living/carbon/human/species/zombie/ai/strong/patrol = 600,
 	)
 	spawn_amount = 1
 	spawn_delay = 8 SECONDS
-	max_amount = 15
+	max_amount = 600
 	mob_decrement_signals = list(COMSIG_QDELETING)
 
 /obj/effect/ai_node/spawner/zombie/Initialize(mapload)
 	. = ..()
 	GLOB.zombie_spawners += src
-	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips_large.dmi', null, "zombie_spawner", VERY_HIGH_FLOAT_LAYER))
+	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips_large.dmi', null, "zombie_spawner", MINIMAP_LABELS_LAYER))
 
 /obj/effect/ai_node/spawner/zombie/Destroy()
 	. = ..()

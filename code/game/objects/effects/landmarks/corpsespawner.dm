@@ -80,16 +80,11 @@
 /// Create the zombie and delete the corpse spawner
 /obj/effect/landmark/corpsespawner/proc/create_zombie()
 	var/spawntype = pickweight(list(
-		/mob/living/carbon/human/species/zombie/ai/stay = 60,
-		/mob/living/carbon/human/species/zombie/ai/patrol = 20,
-		/mob/living/carbon/human/species/zombie/ai/fast/patrol = 1,
-		/mob/living/carbon/human/species/zombie/ai/fast/stay = 4,
-		/mob/living/carbon/human/species/zombie/ai/tank/patrol = 1,
-		/mob/living/carbon/human/species/zombie/ai/tank/stay = 4,
+		/mob/living/carbon/human/species/zombie/ai/patrol = 600,
+		/mob/living/carbon/human/species/zombie/ai/fast/patrol = 100,
+		/mob/living/carbon/human/species/zombie/ai/tank/patrol = 10,
 		/mob/living/carbon/human/species/zombie/ai/smoker/patrol = 1,
-		/mob/living/carbon/human/species/zombie/ai/smoker/stay = 4,
-		/mob/living/carbon/human/species/zombie/ai/strong/patrol = 1,
-		/mob/living/carbon/human/species/zombie/ai/strong/stay = 4,
+		/mob/living/carbon/human/species/zombie/ai/strong/patrol = 10
 	))
 	var/mob/living/carbon/human/victim = new spawntype(loc)
 	victim.real_name = name
