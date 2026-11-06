@@ -7,6 +7,48 @@ TerraGov Marine Corps 
 
 </h1>
 
+## Project origin and changes
+
+**Pain to black** is an independent development fork based on [Unga Marines](https://github.com/PMC-Unga-Marines/Unga-Marines). The project keeps the original Unga Marines codebase and assets as its foundation while developing its own gameplay, balance, assets, and server configuration.
+
+### Source and scope
+
+- Original project: [PMC-Unga-Marines/Unga-Marines](https://github.com/PMC-Unga-Marines/Unga-Marines)
+- Comparison base: upstream commit [`ac63ac6`](https://github.com/PMC-Unga-Marines/Unga-Marines/commit/ac63ac6c802e49a13e3d4224554c4421091bd7a4)
+- Development history: the `Saiga12` branch and its follow-up snapshots
+- Difference from the comparison base: **1,309 files**, including approximately **62,420 additions** and **62,316 deletions**
+- Main affected areas: `code/`, `_maps/`, `icons/`, `html/`, `sound/`, `tgui/`, `tools/`, `config/`, and server/interface files
+
+### Pain to black / Saiga12 changes
+
+The project-specific work recorded after the Unga Marines base includes:
+
+- Saiga-12 and firearm gameplay development, including rifle and weapon balance changes.
+- New weapon behavior, damage, falloff, ammunition, and interaction adjustments.
+- Gameplay testing and iterative fixes recorded in the development history.
+- Custom textures, icons, sounds, maps, interface changes, and supporting code accumulated during development.
+- A complete source snapshot and compiled build published in this repository for continued development.
+
+The detailed, file-by-file record is available in Git history:
+
+- [`b186061`](https://github.com/GOLAj100/Z-bild/commit/b186061517c) — test changes
+- [`2eab60b`](https://github.com/GOLAj100/Z-bild/commit/2eab60b4e0c) — rifle changes
+- [`0dc49ae`](https://github.com/GOLAj100/Z-bild/commit/0dc49ae7e2d) — weapon changes
+- [`01f8b8a`](https://github.com/GOLAj100/Z-bild/commit/01f8b8ac89a) — rifle changes
+- [`2474f25`](https://github.com/GOLAj100/Z-bild/commit/2474f25139c) — rifle changes
+
+To inspect the complete difference against the original base locally:
+
+```text
+git diff ac63ac6c802e49a13e3d4224554c4421091bd7a4..Saiga12
+git log --oneline ac63ac6c802e49a13e3d4224554c4421091bd7a4..Saiga12
+```
+
+### Server data and credentials
+
+Runtime server data is intentionally not part of the public repository. Local `data/` and `player_saves/` directories, player accounts, administrator lists, and webhook/API secrets are excluded from the published source.
+
+
 <div align = center>
 
 ![Badge Resentment]![Badge Dept][![Badge Byond]][Byond]
